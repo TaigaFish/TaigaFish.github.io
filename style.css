@@ -13,19 +13,31 @@ html {
 :root {
     --pink: #ff3258;
     --white: #ffffff;
+    --off-white: #ffffffc5;
     --black: #010101;
+    --off-black: #222222;
 
     --nav-height: 8rem;
 
     --fs-h1: 7.5rem;
     --fs-h2: 6rem;
+    --fs-h3: 4rem;
+
+    --gutter-tiny: 2rem;
+    --gutter-small: 3rem;
+    --gutter-med-small: 4rem;
+    --gutter-med-large: 6rem;
+    --gutter-large: 8rem;
+    --gutter-huge: 10rem;
+    --gutter-eldritch: 20rem;
+
 }
 
 body {
     font-family: 'Atkinson Hyperlegible';
     font-size: 1.8rem;
     font-weight: 400;
-    color: var(--white);
+    color: var(--off-white);
     background-color: var(--black);
 }
 
@@ -41,8 +53,22 @@ a {
     font-size: 2.2rem;
 }
 
+.btn-text {
+    display: inline-block;
+    padding: 0.8rem 0.4rem;
+    border-bottom: 1px solid var(--pink);
+}
+
+img {
+    object-fit: contain;
+}
+
 section {
-    padding: 12rem 0;
+    padding: var(--gutter-huge) 0;
+}
+
+section:not(:last-child) {
+    border-bottom: 1px solid var(--off-black);
 }
 
 .row {
@@ -50,7 +76,8 @@ section {
     margin: 0 auto;
 }
 
-h1, h2 {
+h1, h2, h3 {
+    color: var(--white);
     font-weight: 700;
 }
 
@@ -71,6 +98,14 @@ h2::after {
     background-color: var(--pink);
 }
 
+h3 {
+    font-size: var(fs-h3);
+}
+
+ul {
+    list-style-position: inside;
+}
+
 /* Header */
 
 header {
@@ -80,6 +115,7 @@ header {
     background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url("images/headerBGEdit2.jpg");
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 header .row {
@@ -110,3 +146,45 @@ nav a {
 }
 
 /* My Work */
+
+.work-box {
+    display: flex;
+    align-items: center;
+    gap: var(--gutter-large);
+    margin-top: var(--gutter-small);
+}
+
+.work-box:not(:last-child) {
+    margin-bottom: var(--gutter-eldritch);
+}
+
+.work-box-text > * {
+    margin-top: var(--gutter-tiny);
+}
+
+.work-box-image {
+    max-width: 720px;
+}
+
+.work-box-links {
+    display: flex;
+    align-items: center;
+    gap: var(--gutter-small);
+}
+
+.work-box-image img {
+    max-width: 100%;
+}
+
+.gh-link {
+    transition: all 0.3s;
+}
+
+.gh-link:hover,
+.gh-link:focus {
+    transform: scale(1.2);
+}
+
+.gh-link img {
+    height: 3rem;
+}
