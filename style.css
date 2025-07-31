@@ -11,17 +11,24 @@ html {
 }
 
 :root {
-    --pink: #ff3258;
+    --pink: #ff5776;
+    --green: #8ee075;
     --white: #ffffff;
     --off-white: #ffffffc5;
     --black: #010101;
     --off-black: #222222;
+
+    --green-pink: linear-gradient(90deg, var(--pink), var(--green));
 
     --nav-height: 8rem;
 
     --fs-h1: 7.5rem;
     --fs-h2: 6rem;
     --fs-h3: 4rem;
+
+    --fs-header-text: 2.4rem;
+    --fs-body: 2rem;
+    --fs-gutter: 1.7rem;
 
     --gutter-tiny: 2rem;
     --gutter-small: 3rem;
@@ -35,10 +42,16 @@ html {
 
 body {
     font-family: 'Atkinson Hyperlegible';
-    font-size: 1.8rem;
+    font-size: var(--fs-body);
+    line-height: 1.6;
     font-weight: 400;
     color: var(--off-white);
     background-color: var(--black);
+}
+
+img {
+    max-width: 100%;
+    object-fit: contain;
 }
 
 a {
@@ -49,14 +62,16 @@ a {
 .btn {
     display: inline-block;
     padding: 1.2rem 4rem;
-    border: 1px solid var(--pink);
+    border: 1px solid;
+    border-image: var(--green-pink) 1;
     font-size: 2.2rem;
 }
 
 .btn-text {
     display: inline-block;
     padding: 0.8rem 0.4rem;
-    border-bottom: 1px solid var(--pink);
+    border-bottom: 1px solid;
+    border-image: var(--green-pink) 1;
 }
 
 img {
@@ -95,11 +110,11 @@ h2::after {
     height: 0.3rem;
     width: 12rem;
     margin-top: 1rem;
-    background-color: var(--pink);
+    background-image: var(--green-pink);
 }
 
 h3 {
-    font-size: var(fs-h3);
+    font-size: var(--fs-h3);
 }
 
 ul {
@@ -141,8 +156,17 @@ nav a {
 }
 
 .header-text-container p {
-    font-size: 2.4rem;
+    font-size: var(--fs-header-text);
     margin: 1rem 0 3rem;
+}
+
+.name {
+    display: flex;
+    gap: 1rem;
+}
+
+.name p {
+    margin-top: calc(var(--fs-h1) - var(--fs-header-text));
 }
 
 /* My Work */
@@ -187,4 +211,50 @@ nav a {
 
 .gh-link img {
     height: 3rem;
+}
+
+/* About */
+
+.about {
+    display: flex;
+    gap: var(--gutter-large);
+    margin-top: var(--gutter-med-small);
+}
+
+.about-text p {
+    margin-bottom: var(--gutter-small);
+}
+
+.about-image {
+    flex: 0 0 300px;
+}
+
+/* Contact */
+
+.contact {
+    max-width: 670px;
+}
+
+.contact p {
+    margin: var(--gutter-med-small) 0 var(--gutter-small);
+}
+
+/* Footer */
+
+footer {
+    margin: var(--gutter-large) 0 var(--gutter-med-small);
+    text-align: center;
+    font-size: var(--fs-gutter);
+}
+
+.footer-social {
+    margin-bottom: var(--gutter-med-small);
+}
+
+.footer-social a:not(:last-child) {
+    margin-right: var(--gutter-tiny);
+}
+
+.footer-social img {
+    height: 40px;
 }
