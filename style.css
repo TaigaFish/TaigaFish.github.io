@@ -7,7 +7,13 @@
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* 10px */
+}
+
+@media(max-width: 800px) {
+    html {
+    font-size: 55%;
+    }
 }
 
 :root {
@@ -47,6 +53,7 @@ body {
     font-weight: 400;
     color: var(--off-white);
     background-color: var(--black);
+    overflow-x: hidden;
 }
 
 img {
@@ -87,8 +94,28 @@ section:not(:last-child) {
 }
 
 .row {
-    max-width: 960px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 var(--gutter-huge);
+}
+
+@media(min-width: 1600px) {
+    .row {
+        max-width: 1800px;
+        padding: 0 var(--gutter-eldritch);
+    }
+}
+
+@media(max-width: 850px) {
+    .row {
+        padding: 0 var(--gutter-med-large);
+    }
+}
+
+@media(max-width: 560px) {
+    .row {
+        padding: 0 var(--gutter-small);
+    }
 }
 
 h1, h2, h3 {
@@ -169,6 +196,20 @@ nav a {
     margin-top: calc(var(--fs-h1) - var(--fs-header-text));
 }
 
+@media(max-width: 850px) {
+    .name {
+        flex-direction: column;
+    }
+
+    .name h1 {
+        line-height: 8rem;
+    }
+
+    .name p {
+        margin-top: -1rem;
+    }
+}
+
 /* My Work */
 
 .work-box {
@@ -178,16 +219,40 @@ nav a {
     margin-top: var(--gutter-small);
 }
 
+@media(max-width: 1145px) {
+    .work-box {
+        gap: var(--gutter-med-small);
+        flex-direction: column;
+        align-items: initial;
+    }
+}
+
+.work-box:first-of-type {
+    margin-top: var(--gutter-med-large)
+}
+
 .work-box:not(:last-child) {
     margin-bottom: var(--gutter-eldritch);
 }
 
-.work-box-text > * {
+.work-box-text > *:not(h3) {
     margin-top: var(--gutter-tiny);
 }
 
 .work-box-image {
-    max-width: 720px;
+    max-width: 600px;
+}
+
+@media(max-width: 1350px) {
+    .work-box-image {
+        max-width: 500px;
+    }
+}
+
+@media(max-width: 1145px) {
+    .work-box-image {
+        max-width: initial;
+    }
 }
 
 .work-box-links {
@@ -221,12 +286,37 @@ nav a {
     margin-top: var(--gutter-med-small);
 }
 
+@media(max-width: 850px) {
+    .about {
+        gap: var(--gutter-med-small);
+    }
+}
+
+@media(max-width: 775px) {
+    .about {
+        flex-direction: column;
+    }
+}
+
 .about-text p {
     margin-bottom: var(--gutter-small);
 }
 
 .about-image {
     flex: 0 0 300px;
+}
+
+@media(max-width: 850px) {
+    .about-image {
+        flex: 0 0 200px;
+    }
+}
+
+@media(max-width: 775px) {
+    .about-image {
+        flex: initial;
+        max-width: 450px;
+    }
 }
 
 /* Contact */
