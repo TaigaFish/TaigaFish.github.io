@@ -181,7 +181,7 @@ header {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url("Images/headerBGEdit.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url("Images/spaceSimulation.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
