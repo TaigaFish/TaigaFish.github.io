@@ -8,6 +8,7 @@
 
 html {
     font-size: 62.5%; /* 10px */
+    scroll-behavior: smooth;
 }
 
 @media(max-width: 800px) {
@@ -23,7 +24,7 @@ html {
 }
 
 :root {
-    --pink: #ff5776;
+    --pink: #eb607a;
     --green: #8ee075;
     --white: #ffffff;
     --off-white: #ffffffc5;
@@ -75,18 +76,44 @@ a {
 }
 
 .btn {
+    position: relative;
     display: inline-block;
     padding: 1.2rem 4rem;
     border: 1px solid;
     border-image: var(--green-pink) 1;
     font-size: var(--fs-button);
+    z-index: 1;
+    overflow-x: hidden;
 }
 
 .btn-text {
+    position: relative;
     display: inline-block;
     padding: 0.8rem 0.4rem;
     border-bottom: 1px solid;
     border-image: var(--green-pink) 1;
+    z-index: 1;
+    overflow-x: hidden;
+}
+
+.btn::after,
+.btn-text::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-image: var(--green-pink);
+    z-index: -1;
+    transition: all 0.2s cubic-bezier(1, 0.68, 0.16, 0.9);
+}
+
+.btn:hover::after,
+.btn-text:hover::after {
+    right: 0;
 }
 
 img {
@@ -133,7 +160,7 @@ section:not(:last-child) {
 }
 
 h1, h2, h3 {
-    color: var(--white);
+    color: var(--green);
     font-weight: 700;
     line-height: 1.1;
 }
@@ -152,7 +179,7 @@ h2::after {
     height: 0.3rem;
     width: 12rem;
     margin-top: 1rem;
-    background-image: var(--green-pink);
+    background: var(--pink);
 }
 
 h3 {
@@ -181,7 +208,7 @@ header {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url("Images/spaceSimulation.png");
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url("Images/spaceSimulation.gif");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -227,6 +254,30 @@ nav {
 
 nav a {
     font-size: var(--fs-button);
+    position: relative;
+    overflow-x: hidden;
+    padding-bottom: 0.5rem;
+}
+
+nav a:hover {
+    color: var(--pink);
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 100%;
+    display: block;
+    height: 1rem;
+    width: 100%;
+    background-image: var(--green-pink);
+    transition: all 0.2s cubic-bezier(1, 0.68, 0.16, 0.9);
+}
+
+nav a:hover::after {
+    right: 0;
+    height: 2px;
 }
 
 @media(max-width: 560px) {
@@ -259,6 +310,7 @@ nav a {
 }
 
 .name p {
+    color: var(--pink);;
     font-size: var(--fs-body);
     margin-top: calc(var(--fs-h1) - var(--fs-body) - 1rem);
 }
@@ -417,4 +469,27 @@ footer {
 
 .footer-social img {
     height: 40px;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: var(--gutter-med-small);
+    right: var(--gutter-med-small);
+    background-color: var(--green);
+    height: 3.2rem;
+    width: 3.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s;
+}
+
+.back-to-top.shown {
+    visibility: visible;
+    transform: none;
+    opacity: 1;
 }

@@ -11,17 +11,18 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css"/>
+        <script src="index.js" defer></script>
     </head>
     <body>
 
         <!-- Header -->
 
-        <header>
+        <header id="top">
             <div class="row">
                 <nav>
-                    <a href="">Work</a>
-                    <a href="">About</a>
-                    <a href="">Contact</a>
+                    <a href="#work">Work</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
                 </nav>
             </div>
             <div class="row header-text-container">
@@ -38,7 +39,7 @@
 
         <!-- My Work -->
 
-        <section>
+        <section id="work">
             <div class="row">
                 <h2>My Work</h2>
 
@@ -57,10 +58,13 @@
                             <a href="" class="gh-link">
                                 <img src="Images/github-mark-white.svg" alt="GitHub">
                             </a>
+                            <a href="" class="gh-link">
+                                <img src="Images/youtube.svg" alt="YouTube">
+                            </a>
                         </div>
                     </div>
                     <div class="work-box-image">
-                        <img src="Images/spaceSimulation.png" alt="2D Space Simulation">
+                        <img src="Images/spaceSimulation.gif" alt="2D Space Simulation">
                     </div>
                 </div>
                 <div class="work-box">
@@ -75,6 +79,9 @@
                             <a href="" class="btn-text">Visit Site &nbsp;&rarr;</a>
                             <a href="" class="gh-link">
                                 <img src="Images/github-mark-white.svg" alt="GitHub">
+                            </a>
+                            <a href="https://youtu.be/k1AwDRZ2acU" class="gh-link">
+                                <img src="Images/youtube.svg" alt="YouTube">
                             </a>
                         </div>
                     </div>
@@ -94,10 +101,13 @@
                             <a href="" class="gh-link">
                                 <img src="Images/github-mark-white.svg" alt="GitHub">
                             </a>
+                            <a href="https://youtu.be/vIqTNz7-O14" class="gh-link">
+                                <img src="Images/youtube.svg" alt="YouTube">
+                            </a>
                         </div>
                     </div>
                     <div class="work-box-image">
-                        <img src="Images/crab.png" alt="Placeholder">
+                        <img src="Images/crab.gif" alt="Placeholder">
                     </div>
                 </div>
             </div>
@@ -105,7 +115,7 @@
 
         <!-- About me -->
 
-        <section>
+        <section id="about">
             <div class="row">
                 <h2>About Me</h2>
                 <div class="about">
@@ -127,11 +137,11 @@
 
         <!-- Get in touch -->
 
-        <section>
+        <section id="contact">
             <div class="row">
                 <div class="contact">
                     <h2>Get in Touch</h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi voluptatem voluptatum cupiditate, natus aspernatur culpa omnis consequatur animi, cumque debitis pariatur eligendi quas, sequi sapiente sint officiis rerum nostrum non.</p>
+                    <p></p>
                     <a href="mailto:taigahookey@gmail.com" class="btn">taigahookey@gmail.com</a>
                 </div>
             </div>
@@ -147,10 +157,13 @@
                     </a>
                 </div>
                 <p>
-                    Developed in pure html and css by Taiga Hookey. Inspired by
+                    Developed in pure html, css, and js by Taiga Hookey. Inspired by
                     <a href="https://nisar.dev">Nisar</a>.
                 </p>
             </div>
         </footer>
+        <a aria-label="Back to Top" class="back-to-top" href="#top">
+            <img src="Images/arrow.png">
+        </a>
     </body>
 </html>
