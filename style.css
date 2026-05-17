@@ -202,12 +202,19 @@ ul {
     list-style-position: inside;
 }
 
+.pixelated {
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
 /* Header */
 
 header {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
     background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url("Images/spaceSimulation.gif");
     background-size: cover;
     background-position: center;
@@ -480,8 +487,8 @@ footer {
     bottom: var(--gutter-med-small);
     right: var(--gutter-med-small);
     background-color: var(--green);
-    height: 3.2rem;
-    width: 3.2rem;
+    height: 5.5rem;
+    width: 5.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -496,4 +503,8 @@ footer {
     visibility: visible;
     transform: none;
     opacity: 1;
+}
+
+.back-to-top img {
+    width: 50px;
 }
