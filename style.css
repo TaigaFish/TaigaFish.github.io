@@ -385,6 +385,7 @@ nav a:hover::after {
 @media(max-width: 1145px) {
     .work-box-image {
         max-width: initial;
+        min-width: unset;
     }
 }
 
