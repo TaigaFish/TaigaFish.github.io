@@ -331,6 +331,7 @@ nav a:hover::after {
 .work-box {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: var(--gutter-large);
     margin-top: var(--gutter-small);
 }
@@ -363,11 +364,14 @@ nav a:hover::after {
 
 .work-box-image {
     max-width: 600px;
+    min-width: 600px;
+    width: 100%;
 }
 
-@media(max-width: 1350px) {
+@media(max-width: 1600px) {
     .work-box-image {
         max-width: 500px;
+        min-width: 500px;
     }
 }
 
@@ -384,7 +388,7 @@ nav a:hover::after {
 }
 
 .work-box-image img {
-    max-width: 100%;
+    width: 100%;
 }
 
 .gh-link {
