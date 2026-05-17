@@ -28,8 +28,8 @@ html {
     --green: #8ee075;
     --white: #ffffff;
     --off-white: #ffffffc5;
-    --black: #010101;
-    --off-black: #222222;
+    --black: #070a07;
+    --off-black: #0c1607;
 
     --green-pink: linear-gradient(90deg, var(--pink), var(--green));
 
@@ -61,7 +61,7 @@ body {
     line-height: 1.6;
     font-weight: 400;
     color: var(--off-white);
-    background-color: var(--black);
+    background-color: var(--off-black);
     overflow-x: hidden;
 }
 
@@ -125,7 +125,7 @@ section {
 }
 
 section:not(:last-child) {
-    border-bottom: 1px solid var(--off-black);
+    border-bottom: 1px solid var(--black);
 }
 
 .row {
