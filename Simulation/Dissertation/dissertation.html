@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>
+            Dissertation
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="dissertation.css"/>
+        <script src="/index.js" defer></script>
+    </head>
+    <body>
+        <header id="top">
+            <section>
+                <h1>Mass-based n-body gravitation in real-time video games</h1>
+                <p>By Taiga Hookey</p>
+            </section>
+        </header>
+        <section id="contents">
+            <h2>Contents</h2>
+            <div>
+                <a href="#abstract">Abstract</a>
+                <a href="#introduction">Introduction</a>
+                <a href="#aimsAndObjectives">Aims and Objectives</a>
+                <div>
+                    <a href="#aims">Aims</a>
+                    <a href="#objectives">Objectives</a>
+                </div>
+                <a href="#literatureReview">Literature Review</a>
+                <div>
+                    <a href="#litIntroduction">Introduction</a>
+                    <a href="#historyOfPhysicalModels">History of Physical Models</a>
+                </div>
+            </div>
+        </section>
+        <section id="abstract">
+            <h2>Abstract</h2>
+            <p>
+                This paper analyses the modelling of mass-based n-body gravity with a specific lens focused on its potential application in real-time simulations such as video games.
+            </p>
+            <p>
+                Through the literature review, a history of physical models is provided before looking at Newtonian Mechanics and General Relativity specifically.
+                Newtonian Mechanics is identified as the better model for the specified use case. 
+                The N-body Problem is briefly considered, concluding that through a mixture of small enough and distant enough planetary objects, 
+                the problem can be effectively reduced to a 2-body problem allowing for the creation of stable orbits which is likely to be important for application in video games. 
+                Next, the current use of gravity in video games is discussed, finding a general homogeneity in the industry’s use of gravity. 
+                The only notable mass-based implementation found was in Outer Wilds which bypassed the N-body Problem completely. 
+                Finally, the literature review considers optimisation techniques due to the exponential increase in computations compared to objects necessary for n-body simulations. 
+                This found the Barnes-Hut Tree-Particle method and threading to be the most promising techniques.
+            </p>
+            <p>
+                An artefact was then created to implement Newtonian mechanics for gravity calculations with 2011 objects in the world. 
+                Before optimising, this had significant lag but through the Tree-Particle method and threading, this was brought down to a stable 60 frames per second across multiple thresholds of accuracy.
+            </p>
+        </section>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>
+                Gravity in video games has been largely homogenous before they even became commercialised. 
+                This paper aims to suggest a mass-based alternative and prove its viability in real-time simulations. 
+                This should provide the basis for a more realistic and challenging approach to physics which forces the player to rethink how they interact in a simulated world <a href="#beachum">(Beachum, 2013)</a>.
+            </p>
+            <p>
+                Historically gravity in video games takes one of two forms: 
+                a force which pulls in a set direction which can be traced all the way back to 1958 with Tennis for Two; 
+                or a force which pulls towards a set point which can be traced back to 1962 with Spacewar!. 
+                All of Steam’s top selling games of January 2026 use the former of these types of gravity <a href="#topRel">(Top Releases of January, 2026, 2026)</a>. 
+                This indicates a lack of development in the games industry for the past 6 decades. 
+                This lack of development could be indicative of multiple things, such as technical obstacles in implementing a mass-based approach, 
+                or a perceived lack of demand by players for this particular approach. 
+                However, a notable example which uses mass-based gravity in games, Outer Wilds, has 95% positive reviews and was named Game of the Year by Giant Bomb, Polygon, Eurogamer and The Guardian <a href="#outer">(Outer Wilds, 2026)</a>.
+            </p>
+            <p>
+                This suggests that games with mass-based gravity are both possible and popular although n-body gravity is still a gap in exploration for games. 
+                As a result, 
+                this paper aims to approach and solve the practical problems with simulating gravity in real-time as a basis for further research and the development of games utilizing these findings and testing player experience.
+            </p>
+        </section>
+        <section id="aimsAndObjectives">
+            <h2>Aims and Objectives</h2>
+            <div id="aims">
+                <h3>Aims</h3>
+                <p>
+                    This paper researches different physical models of gravity, 
+                    exploring how they have already been applied to video games and proposing a new model using mass-based gravity which could be used in the design and development of future games. 
+                    This model is then implemented using additionally researched optimisation techniques used to enable real-time operation.  
+                    The paper specifically aims to achieve the following three research questions (RQs):
+                </p>
+                <li>(RQ1) Based on secondary research, what mass-based gravitational model will be the best fit for a real-time setting such as a video game?</li>
+                <li>(RQ2) Through a mixture of primary and secondary research, what are the best techniques to optimise a real-time mass-based gravity simulation?</li>
+                <li>(RQ3) Through primary research can a consistent 60+ fps (~16.7 milliseconds per frame) be achieved for a mass-based gravity simulation operating on consumer grade hardware?</li>
+            </div>
+            <div id="objectives">
+                <h3>Objectives</h3>
+                <p>
+                    These aims can be reworked into the following objectives (Obs):
+                </p>
+                <li>(Ob1) Perform secondary research to identify the best mass-based gravitational model for use in a real-time video game (primarily exploring Newtonian Mechanics and General Relativity).</li>
+                <li>(Ob2) Perform secondary research to identify relevant optimisation techniques, then create an artefact to test their effectiveness.</li>
+                <li>(Ob3) Produce an artefact which implements mass-based gravity which runs consistently at 60+ fps (~16.7 milliseconds per frame).</li>
+            </div>
+        </section>
+        <section id="literatureReview">
+            <h2>Literature Review</h2>
+            <div id="litIntroduction">
+                <h3>Introduction</h3>
+                <p>
+                    Over the course of this literature review, 
+                    the researcher will explore the evolution of physical models for gravity as well as their implementation in video games to later inform an artefact that will be made to test a 2D implementation and optimisation of physics-based gravity in a solar-system model. 
+                    The review will begin by looking at the historical context leading to Newton’s Gravitational Model before looking in more depth at that model and subsequently exploring the understanding of gravity in the Theory of General Relativity. 
+                    Following this, specific research will be done into the multiple body problem, before looking at relevant optimisation techniques.
+                </p>
+            </div>
+            <div id="historyOfPhysicalModels">
+                <h3>History of physical models</h3>
+                <p>
+                    The origin of science-based cosmological models can be traced back to Pythagorean philosophy from the 6th century BC 
+                    (largely attributed to Philolaus <a href="#zhmud">(Zhmud, 2012)</a>) which taught of a round Earth which spun on an axis with all of the heavenly bodies orbiting a central fire 
+                    (notably not the Sun) on concentric spheres <a href="#chow">(Chow, 2024)</a>. 
+                    This theory helped pave the way for later rational models even though it was not particularly evidence based. 
+                    There was no evidence of the central fire, 
+                    and its presence was just assumed due to its spiritual implications, 
+                    this led to its eventual replacement in the 4th century BC by Aristotle. 
+                </p>
+                <p>
+                    In the 4th century BC, Aristotle established evidence-based arguments as to why the Earth is spherical. In his book, <i>On The Heavens</i>, he noted that the Earth’s shadow on the moon was always round which would only be caused by a spherical Earth unless it was a disc with the Sun directly under the centre. Another argument was due to the position of the North Star being higher in the sky towards the north of the Earth. Aristotle also held that the Earth was a fixed point which the rest of the heavens orbited around although he had no scientific evidence for this. Ptolemy, in the 2nd century AD, later built on this idea to put forward a more concrete geocentric model. This model put 8 spheres around the Earth carrying the moon, the five known planets with the Sun between Venus and Mars, and finally the fixed stars on the outermost layer. The system required the planets moving about smaller circles attached to their spheres to account for their perceived paths in the sky and, more problematically, the path put forward for the moon would make it twice as close to the Earth at some moments in time compared to others, which would suggest that at times it should appear twice as big as at others. This was a flaw that Ptolemy recognised, but due in part to the model’s acceptance from the Catholic Church, the model remained largely unchallenged until the 16th century by Copernicus <a href="#hawking">(Hawking, 2016)</a>.
+                </p>
+                <p>
+                    Copernicus put forward the simpler idea that the planets including Earth went through circular orbits around a stationary Sun although this theory was not taken seriously (in part due to the predicted orbits not properly lining up with the observable evidence) until almost a century later when Kepler and Galileo started to support the theory <a href="#hawking">(Hawking, 2016)</a>.
+                </p>
+                <p>
+                    Kepler was one of the first astronomers to attempt to move towards physical reason over geometric reason. Until this point, many models had observed eccentricity of orbits, in other words it was known that the supposed circular orbits were not centred around the focus of the orbit but instead slightly offset. This meant that under the Copernican system, the planets would at some point be closer in the orbits to the Sun. For all of the planets but the Earth, this meant that they moved faster as they were closer to the Sun. Kepler reasoned that since the Sun appeared to be the cause of the planetary movement, the Earth must also move faster in its orbit as it approached the Sun. With the help of Brahe’s meticulous observations, he mapped the orbit of the Earth about the Sun and stumbled upon his law of areas (the line swept out between a planet and the sun always forms an equal area in equal time periods <a href="#wilson">(Wilson, 1972)</a>) as a shortcut. This worked at the near and far points of the orbit, but for the rest of it, the areas were wrong, however, assuming that his law was true, he realised that the areas would be correct if the orbit was elliptical with the Sun being a focus <a href="#gingerich">(Gingerich, 2009)</a>.
+                </p>
+                <p>
+                    In 1609, Galileo learned of a device using two lenses which brought distant images closer. When he discovered how it worked, he began working to improve its amplification capabilities, inventing the telescope. Using this, he discovered three main things: Jupiter had four moons which orbited around it, this suggested that the Earth did not have to be the focus of the orbits of all the heavenly bodies <a href="#hawking">(Hawking, 2016)</a>; Venus goes through phases similar to the Moon, suggesting that it orbited around the Sun instead of the Earth <a href="#chow">(Chow, 2024)</a>; the surface of the moon was covered in mountains, craters, and seas, making it remarkably Earth-like, not just a smooth, crystalline ball <a href="#gingerich">(Gingerich, 2009)</a>. None of this proved that the Earth also orbited the Sun, but it did suggest that the Earth was less singular than previously thought when compared to the observable satellites. This gave less reason for the Earth to be believed to be unique in its lack of movement too, which was important given the religious landscape. A non-geocentric model was incredibly hard to support due to persecution by both the Catholic and Protestant churches at the time.
+                </p>
+                <p>
+                    Together, Galileo and Kepler had managed to promote the idea of a heliocentric model with elliptical orbits, though they could not explain what kept the planets in these orbits. The last element required to bridge the gap to Newton is the physical principles and geometry of Descartes as these were theories that Newton was raised on <a href="#brackenridge">(Brackenridge, 1996)</a>. In the 17th century, Descartes published his <i>Principia philosophiae</i> in which he details two laws of motion. Firstly, he observed that the effort required to bring an object to motion from rest is equivalent to the effort required to bring an object from rest to motion. This led him to describe motion as a relative property where under no external force an object will remain in its state whether that be at rest or in motion. Secondly, now that undisturbed motion has been defined to continue, he clarifies that the motion must be in a straight line, thus curved motion must be under a force <a href="#baigrie">(Baigrie, 1992)</a>. These laws together defined inertial mechanics and would later be adapted by Newton into his first law of motion; they also reveal that there must be a force acting upon the planets to keep them in their orbits. 
+                </p>
+            </div>
+        </section>
+        <section id="references">
+            <h2>References</h2>
+            <ul id="baigrie">Baigrie, B. (1992) “Descartes’ Mechanical Cosmology.”</ul>
+            <ul id="barnes">Barnes, J. and Hut, P. (1986) “A hierarchical O(N log N) force-calculation algorithm,” <i>Nature</i>, 324(6096), pp. 446–449. Available at: <a href="https://doi.org/10.1038/324446a0">https://doi.org/10.1038/324446a0</a>.</ul>
+            <ul id="barrow-green">Barrow-Green, J. (1993) “Poincare and the Three Body Problem,” <i>History of mathematics</i>, 11. Available at: <a href="https://doi.org/10.21954/ou.ro.0000e03b">https://doi.org/10.21954/ou.ro.0000e03b</a>.</ul>
+            <ul id="beachum">Beachum, A. (2013) <i>Outer Wilds A Game of Curiosity-Driven Space Exploration.</i> Available at: <a href="https://digitallibrary.usc.edu/C.aspx?VP3=pdfviewer&rid=2A3BF163YX5A">https://digitallibrary.usc.edu/C.aspx?VP3=pdfviewer&rid=2A3BF163YX5A</a> (Accessed: January 8, 2026).</ul>
+            <ul id="bekenstein">Bekenstein, J.D. (1991) “Gravitational Theories,” <i>The Astronomy and Astrophysics Encyclopedia</i> [Preprint].</ul>
+            <ul id="brackenridge">Brackenridge, J.Bruce. (1996) <i>The Key to Newton’s Dynamics.</i> University of California Press.</ul>
+            <ul id="cao">Cao, J. and Wang, M. (2023) “A Fast and Generalized Broad-Phase Collision Detection Method Based on KD-Tree Spatial Subdivision and Sweep-and-Prune,” <i>IEEE Access</i>, 11, pp. 44696–44710. Available at: <a href="https://doi.org/10.1109/ACCESS.2023.3274202">https://doi.org/10.1109/ACCESS.2023.3274202</a>.</ul>
+            <ul id="choquet-bruhat">Choquet-Bruhat, Y. (2023) <i>Introduction to General Relativity, Black Holes, and Cosmology.</i> Oxford University Press.</ul>
+            <ul id="chow">Chow, T. (2024) <i>Classical Mechanics.</i> 3rd ed. CRC Press.</ul>
+            <ul id="cohen">Cohen, I.B. (1981) “Newton’s Discovery of Gravity,” 244(3), pp. 166–181. Available at: <a href="https://doi.org/10.2307/24964334">https://doi.org/10.2307/24964334</a>.</ul>
+            <ul id="dyson">Dyson, F.W., Eddington, A.S. and Davidson, C. (1920) “IX. A determination of the deflection of light by the sun’s gravitational field, from observations made at the total eclipse of May 29, 1919,” <i>Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character</i>, 220(571–581), pp. 291–333. Available at: <a href="https://doi.org/10.1098/rsta.1920.0009">https://doi.org/10.1098/rsta.1920.0009</a>.</ul>
+            <ul id="fog">Fog, A. (2025) <i>Instruction tables.</i> Available at: <a href="https://www.agner.org/optimize/#testp">https://www.agner.org/optimize/#testp</a>.</ul>
+            <ul id="fuchs">Fuchs, H., Bruce, D. and Naylor, F. (1980) <i>ON VISIBLE SURFACE GENERATION BY A PRIOri TREE STRUCTURES*.</i> Available at: <a href="https://doi.org/https://doi.org/10.1145/965105.807481">https://doi.org/https://doi.org/10.1145/965105.807481</a>.</ul>
+            <ul id="gingerich">Gingerich, O. (2009) “Kepler, Galileo and the birth of modern astronomy,” <i>Proceedings of the International Astronomical Union</i>, 5(S260), pp. 172–181. Available at: <a href="https://doi.org/10.1017/s1743921311002250">https://doi.org/10.1017/s1743921311002250</a>.</ul>
+            <ul id="hawking">Hawking, S. (2016) <i>A Brief History of Time.</i> Updated. Bantam Books.</ul>
+            <ul id="hristov">Hristov, H. (2025) Introduction to K-D Trees, <i>Baeldung.</i> Available at: <a href="https://www.baeldung.com/cs/k-d-trees">https://www.baeldung.com/cs/k-d-trees</a> (Accessed: January 28, 2026).</ul>
+            <ul id="iwata">Iwata, S. (2007) <i>Iwata Asks - Super Mario Galaxy, Nintendo.</i> Nintendo. Available at: <a href="https://iwataasks.nintendo.com/interviews/wii/super_mario_galaxy/0/0/">https://iwataasks.nintendo.com/interviews/wii/super_mario_galaxy/0/0/</a> (Accessed: December 4, 2025).</ul>
+            <ul id="jasper">Jasper (2020) <i>How Spherical Planets Broke the Rules in Super Mario Galaxy, YouTube.</i> Available at: <a href="https://www.youtube.com/watch?v=QLH_0T_xv3I">https://www.youtube.com/watch?v=QLH_0T_xv3I</a> (Accessed: December 4, 2025).</ul>
+            <ul id="liu">Liu, Z. <i>et al.</i> (2025) “swPHoToNs: Toward trillion-body-scale cosmological N-body simulations on Sunway TaihuLight supercomputer,” <i>Engineering Reports, 7(3).</i> Available at: <a href="https://doi.org/10.1002/eng2.12640">https://doi.org/10.1002/eng2.12640</a>.</ul>
+            <ul id="outer"><i>Outer Wilds</i> (2026) <i>Steam.</i> Available at: <a href="https://store.steampowered.com/app/753640/Outer_Wilds/">https://store.steampowered.com/app/753640/Outer_Wilds/</a> (Accessed: February 25, 2026).</ul>
+            <ul id="peale">Peale, S.J. (2023) “Celestial Mechanics,” <i>Encyclopedia Britannica</i> [Preprint]. Available at: <a href="https://www.britannica.com/science/celestial-mechanics-physics">https://www.britannica.com/science/celestial-mechanics-physics</a> (Accessed: January 9, 2026).</ul>
+            <ul id="perkowitz">Perkowitz, S. (2025) “Relativity,” <i>Encyclopedia Britannica</i> [Preprint]. Available at: <a href="https://www.britannica.com/science/relativity">https://www.britannica.com/science/relativity</a> (Accessed: November 19, 2025).</ul>
+            <ul id="reinders">Reinders, J. (2007) <i>Intel Threading Building Blocks.</i> Beijing: O’Reilly.</ul>
+            <ul id="szauer">Szauer, G. (2017) <i>Game Physics Cookbook.</i> Birmingham, England: Packt. Available at: <a href="https://libstaff.primo.exlibrisgroup.com/permalink/44STA_INST/rlkpvs/alma991000875054006826">https://libstaff.primo.exlibrisgroup.com/permalink/44STA_INST/rlkpvs/alma991000875054006826</a> (Accessed: January 22, 2026).</ul>
+            <ul id="topRel"><i>Top Releases of January, 2026</i> (2026) <i>Steam.</i> Available at: <a href="https://store.steampowered.com/charts/topnewreleases/january_2026">https://store.steampowered.com/charts/topnewreleases/january_2026</a> (Accessed: February 25, 2026).</ul>
+            <ul id="torres">Torres, D. (2024) “Loan Verneau, Creative Lead at Mobius Digital on Outer Wilds,” <i>Point’n Think</i>, 4 October. Available at: <a href="https://www.pointnthink.fr/en/loan-verneau-creative-lead-at-mobius-digital-on-outer-wilds/">https://www.pointnthink.fr/en/loan-verneau-creative-lead-at-mobius-digital-on-outer-wilds/</a> (Accessed: January 8, 2026).</ul>
+            <ul id="wardrip-fruin">Wardrip-Fruin, N. (2019) “Gravity in Computer Space,” <i>ROMchip</i> [Preprint]. Available at: <a href="https://www.romchip.org/index.php/romchip-journal/article/view/91">https://www.romchip.org/index.php/romchip-journal/article/view/91</a> (Accessed: December 11, 2025).</ul>
+            <ul id="whittaker">Whittaker, E. (1989) <i>A History of the Theories of Aether and Electricity.</i> Courier Dover Publications.</ul>
+            <ul id="wilson">Wilson, C. (1972) “How Did Kepler Discover His First Two Laws?,” 226(3), pp. 92–107. Available at: <a href="https://doi.org/10.2307/24927297">https://doi.org/10.2307/24927297</a>.</ul>
+            <ul id="winkels">Winkels, A. (2014) <i>Lovers in a Dangerous Spacetime DevLog #7, asteroid base.</i> Available at: <a href="https://www.asteroidbase.com/devlog/7-learning-how-to-walk/">https://www.asteroidbase.com/devlog/7-learning-how-to-walk/</a> (Accessed: December 4, 2025).</ul>
+            <ul id="xen">xen-42 (2023) <i>What’s up with Physics in Outer Wilds?, YouTube.</i> YouTube. Available at: <a href="https://www.youtube.com/watch?v=dpKUoWgRBSU">https://www.youtube.com/watch?v=dpKUoWgRBSU</a> (Accessed: December 4, 2025).</ul>
+            <ul id="xiaochun">Xiaochun, M. (2022) “Using the Newton’s Theory of Gravity to Calculate the Deflection of Light in the Solar System and the Orbital Poles of Light’s Motion of General Relativity,” <i>SCIREA Journal of Physics</i> [Preprint]. Available at: <a href="https://doi.org/10.54647/physics14417">https://doi.org/10.54647/physics14417</a>.</ul>
+            <ul id="xu">Xu, G. (1994) “A New Parallel N-Body Gravity Solver: TPM,” <i>The Astrophysical Journal Supplement Series</i> [Preprint]. Available at: <a href="https://doi.org/10.1086/192166">https://doi.org/10.1086/192166</a>.</ul>
+            <ul id="zhmud">Zhmud, L. (2012) <i>Phythagoras and the Early Pythagoreans.</i> OUP Oxford.</ul>
+        </section>
+        <a aria-label="Back to Top" class="back-to-top" href="#top">
+            <img class="pixelated" src="/Images/arrow.png">
+        </a>
+    </body>
+</html>

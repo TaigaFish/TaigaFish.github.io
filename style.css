@@ -116,10 +116,6 @@ a {
     right: 0;
 }
 
-img {
-    object-fit: contain;
-}
-
 section {
     padding: var(--gutter-huge) 0;
 }
