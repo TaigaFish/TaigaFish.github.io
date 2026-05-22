@@ -37,6 +37,7 @@ html {
     --fs-h2: 6rem;
     --fs-h3: 4rem;
     --fs-h4: 3rem;
+    --fs-h5: 2rem;
 
     --fs-header-text: 2.4rem;
     --fs-button: 2.2rem;
@@ -112,6 +113,7 @@ h1, h2, h3 {
 
 h1 {
     font-size: var(--fs-h1);
+    margin-bottom: var(--gutter-med-small);
 }
 
 h2 {
@@ -119,7 +121,7 @@ h2 {
 }
 
 h3 {
-    font-size: var(--fs-h3);
+    font-size: var(--fs-h4);
     margin-bottom: var(--gutter-small);
 }
 
@@ -131,11 +133,11 @@ h3 {
         font-size: var(--fs-h3);
     }
     h3 {
-        font-size: var(--fs-h4);
+        font-size: var(--fs-h5);
     }
 }
 
-h2::after {
+h2::after, h1::after {
     content: "";
     display: block;
     height: 0.3rem;
@@ -221,11 +223,7 @@ ul {
     width: 50px;
 }
 
-time {
-    margin-bottom: var(--gutter-med-small);
-}
-
-section::after, div::after {
+section:not(:last-of-type)::after, div:not(:last-of-type)::after {
     content: "";
     display: block;
     height: 0.3rem;
@@ -239,4 +237,74 @@ iframe {
     border: 0;
     width: 640px;
     aspect-ratio: 16 / 9;
+}
+
+@media(max-width: 800px) {
+    iframe {
+        width: 100%;
+    }
+}
+
+/* Footer */
+
+footer {
+    margin: var(--gutter-large) 0 var(--gutter-med-small);
+    text-align: center;
+    font-size: var(--fs-gutter);
+}
+
+.footer-social {
+    margin-bottom: var(--gutter-med-small);
+}
+
+.footer-social a:not(:last-child) {
+    margin-right: var(--gutter-tiny);
+}
+
+.footer-social img {
+    height: 40px;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: var(--gutter-med-small);
+    right: var(--gutter-med-small);
+    background-color: var(--green);
+    height: 5.5rem;
+    width: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s;
+}
+
+.back-to-top.shown {
+    visibility: visible;
+    transform: none;
+    opacity: 1;
+}
+
+.back-to-top img {
+    width: 50px;
+}
+
+.home {
+    position: fixed;
+    bottom: var(--gutter-med-small);
+    left: var(--gutter-med-small);
+    background-color: var(--green);
+    height: 5.5rem;
+    width: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.home img {
+    width: 50px;
 }
