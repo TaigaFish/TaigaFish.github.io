@@ -10,189 +10,140 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/style.css"/>
+        <link rel="stylesheet" href="/about.css"/>
     </head>
     <body>
         <section>
-            <div class="row">
-                <h2>Squirrel Summit</h2>
-                <img class="pixelated" src="/Images/squirrelSummit.png" alt="Squirrel Summit Screenshot">
-                <div>
-                    <p>Squirrel Summit was a game I made in my first year of university. It was for a module where we were learning to make cross-platform games, specifically for both PC and the Evercade Exp.</p>
-                    <p>
-                        This project taught me the importance of factoring out code into different classes. 
-                        This was especially important for the input handler which needed to translate different keys to the same input type depending on which platform the game was running on.
-                        Another thing that I learnt was how to better use visual studio's debugging tools.
-                        Especially using features such as break-points which due to the smaller scale of previous projects I hadn't used as much before.
-                    </p>
-                </div>
-            </div>
+			<h1>Squirrel Summit</h1>
+			<img class="pixelated" src="/Images/squirrelSummit.png" alt="Squirrel Summit Screenshot">
+			<p>Squirrel Summit was a game I made in my first year of university. It was for a module where we were learning to make cross-platform games, specifically for both PC and the Evercade Exp.</p>
+			<p>
+				This project taught me the importance of factoring out code into different classes. 
+				This was especially important for the input handler which needed to translate different keys to the same input type depending on which platform the game was running on.
+				Another thing that I learnt was how to better use visual studio's debugging tools.
+				Especially using features such as break-points which due to the smaller scale of previous projects I hadn't used as much before.
+			</p>
         </section>
         <section class="row">
 			<h2>Dev Log</h2>
-			<article>
-				<div class="ipsEntry__post">
-					<time datetime="2024-04-05T19:26:03Z" title="04/05/24 20:26"><span class="ipsTime__long">April 5, 2024</span></time>
-					<!-- Post content -->
-					<div data-ips-hook="postContent" class="ipsRichText ipsRichText--user" data-role="commentContent" data-controller="core.front.core.lightboxedImages">
-							<p>
-								Since I have neglected making a post so far for this project, I will try to cover what I have done to this point in as much detail as I can remember. I will try to post more frequently going forward.
-							</p>
-
-							<p>
-								Firstly, I will go briefly go over my plan for the project, this will be very brief, as I have covered this in more detail in the submission. I will be making a vertical platformer, taking inspiration primarily from Celeste with a squirrel theme. The main things I plan to include aside from the platforming fundamentals of moving and jumping are, acorns which can be picked up, thrown, and used to weigh down buttons, and some form of collectible to increase replayability. I also would like to have some form of floating mechanic, but exactly how this works will depend on testing to figure out how to not make the platforming too easy with it.
-							</p>
-
-							<p>
-								I have designed a squirrel sprite for the protagonist which took a few iterations to iron out and will take some more when I get around to adding the animations.
-							</p>
-
-							<p>
-								<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2710632" data-ipslightbox-group="g41921"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2710632" data-ratio="100.00" width="32" alt="image.png.8970430d0f4dac95416171db7595bdbf.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.8970430d0f4dac95416171db7595bdbf.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.32"></i-lightbox>&nbsp;-&gt;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2710633" data-ipslightbox-group="g41921"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2710633" data-ratio="100.00" width="32" alt="image.png.619c84f27b1786c1c6b52d47643e8036.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.619c84f27b1786c1c6b52d47643e8036.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.32"></i-lightbox>&nbsp;-&gt;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2710634" data-ipslightbox-group="g41921"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2710634" data-ratio="100.00" width="32" alt="image.png.6ad513f77fa9bdc78eff97f105a4794f.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.6ad513f77fa9bdc78eff97f105a4794f.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.32"></i-lightbox>
-							</p>
-
-							<p>
-								The first iteration's tail was a little too upright, and then the shadowing didn't quite look right on the second, so I kept making modifications until the third version which is the final one so far.
-							</p>
-
-							<p>
-								I designed the first version very quickly in order to get an image to display on the screen to test my display code, and then by the time I got to making collisions, I needed a sprite for a second object, so I quickly made a crate sprite as shown below. I also, for clarity made a temporary background, which currently doesn't look very good, so I will try to make a better one at some point.
-							</p>
-
-							<p>
-								<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2710635" data-ipslightbox-group="g41921"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2710635" data-ratio="100.00" width="16" alt="image.png.7135efd4e7e06815acc731f93c919377.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.7135efd4e7e06815acc731f93c919377.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.16"></i-lightbox>
-							</p>
-
-							<p>
-								Currently, I am at a stage where I have basic room loading for the first room, and a circle and box collision detection system which currently prints a detected collision to the console as shown below.
-							</p>
-
-							<p>
-								<a class="ipsAttachLink ipsAttachLink_image" href="//media.invisioncic.com/x335977/monthly_2024_04/image.png.c5ccd86cdf4fb39f980501572fa5d280.png" data-fileid="2710636" data-fileext="png" rel=""><img class="ipsImage ipsImage_thumbnailed" data-fileid="2710636" data-ratio="49.22" width="1024" alt="image.thumb.png.31b9c27b08cf5dcc5122d14b95e59386.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.thumb.png.31b9c27b08cf5dcc5122d14b95e59386.png" data-ips-lazyload-processed="1" loading="lazy" height="20.8"></a>
-							</p>
-
-							<p>
-								Since, I am currently, behind where I planned to be, I shall have to do a lot of work next week to attempt to catch up, but I am not too worried currently, as I don't think it should take me too long to catch back up.
-							</p>
-					</div>
-				</div>
-			</article>
-			<article>
-				<div class="ipsEntry__post">
-					<time datetime="2024-04-05T21:53:39Z" title="04/05/24 22:53" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 5, 2024</span></time>
-					<div data-ips-hook="postContent" class="ipsRichText ipsRichText--user" data-role="commentContent" data-controller="core.front.core.lightboxedImages">
-						<p>
-							In preparation for adding gravity to my game, and eventually jumping, I reworked my player movement system to use a velocity vector to tell the player (and other GameObjects) how to move, this way, I was able to set up a blocking box collision function to tell me what direction, a collision is happening in so that I could easily check the direction of the collision against the direction that the game object is moving in, and if they match, the velocity on the respective axis is set to 0 to stop the player (or other GameObjects) from moving through what they collided with. This means that when I come round to adding gravity, which should be as simple as decreasing the y velocity by some value multiplied by deltaTime every frame, I should be able to create some GameObjects that ignore gravity to act as a floor to stop the player (and other objects like my boxes) from falling forever., This will then enable me to make a jump mechanic, which should only take adding a static value to the y velocity on a key press (as well as some way to check that the player is on the ground, which will likely be more complex).
-						</p>
-					</div>
-				</div>
-			</article>
-			<article>
-				<div class="ipsEntry__post">
-					<time datetime="2024-04-07T23:12:55Z" title="04/08/24 00:12" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 8, 2024</span></time>
-					<div>
-						<p>
-							Today I first refactored a bit of my collision code so that it was all within the collision file and slightly easier for me to use in the future. Then I added a gravity variable and function to my GameObject class and called it in my character's update function. I made a variable for the gravity as if I am going to add a way for the squirrel to float in game, one way to do this is to just adjust the gravity variable (though I may decide to instead limit the downwards velocity). I added a very temporary floor sprite and then created a very basic way for the player to jump. I will most likely change this way of jumping in the future as it currently checks if the vertical velocity is 0 to ensure that the player can jump which could in theory happen in the air and cause bugs later on.
-						</p>
-
-						<p>
-							<iframe allowfullscreen="" frameborder="0" height="360" width="640" data-ips-lazyload-processed="1" loading="lazy" src="//www.youtube.com/embed/K6yv9fEf5gI?rel=0"></iframe>
-						</p>
-
-						<p>
-							Above is a video showcasing the gravity, jumping and collisions working in my game. The values for gravity and jump strength are not final, but I will need to know more about how the game will look in terms of platforms to better understand how the gravity and jump height affect the gameplay.
-						</p>
-
-						<p>
-							When I was testing my game, I also found some bugs as shown below.
-						</p>
-
-						<p>
-							<iframe allowfullscreen="" frameborder="0" height="360" width="640" data-ips-lazyload-processed="1" loading="lazy" src="//www.youtube.com/embed/n9j6M6wm81U?rel=0"></iframe>
-						</p>
-
-						<p>
-							Based on my testing, I have figured out that the second bug is caused by an interaction with the collision with the box, and the way that I have done my movement. The first is more simple and happens when holding right and then pressing and releasing left. When I next work on my game, I will try to figure out what exactly are the issues and fix them.
-						</p>
-					</div>
-				</div>
-			</article>
-			<article>
-				<div class="ipsEntry__post">
-					<time datetime="2024-04-12T23:20:03Z" title="04/13/24 00:20" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 13, 2024</span></time>
-					<!-- Post content -->
-					<div>
-						<p>
-							Over the course of this week, I have fixed the bugs showcased in my previous post by reworking my movement system. The player now moves by accelerating up to a maximum velocity, and stops by decelerating twice as quickly. I also decided to try and base the movement speed and jumps heights off of how quickly squirrels run and jump. I did this by imagining each pixel to be approximately 1 cm, which also happened to line up with the height of my character. I found a value online saying that squirrels can run at up to 20 mph which is about 894 cm/s, when I tested this value in game, the squirrel moved way to quickly and was off the screen by the time it reached its top speed, so I decreased this significantly to 400 pixels per second. For the acceleration, I couldn't find a value online, so I just guessed 800 pixels per second squared since I know that squirrels can accelerate quickly to escape predators. I found that squirrels can jump over two meters, so setting gravity at approximately 980 pixels per second squared, I calculated an initial velocity of 627 pixels per second to allow the squirrel to jump 200 pixels. Plugging these values as well as a terminal velocity for falling of 1028 pixels per second, revealed a glitch that I was hoping to avoid which is that the squirrel can fall too quickly for my current collision checks meaning that I will have to rework my collision to be predictive. In other words, the squirrel can currently move from one side of the collision boundary to the other in less than a frame so I will have to include a calculation to check if the character will have moved through the boundary and then stop it on top of the boundary.
-						</p>
-
-						<p>
-							<iframe allowfullscreen="" frameborder="0" height="360" width="640" data-ips-lazyload-processed="1" loading="lazy" src="//www.youtube.com/embed/qBGs3m-MH5Q?rel=0"></iframe>
-						</p>
-
-						<p>
-							I also created new sprites for the ground as can be seen in the video. I first created the one for the top layer of grass which is 16x18 pixels, I then rotated this around to make side and bottom versions, and created a brown 16x16 sprite for middle layers. I will likely need to make inside and outside corner versions to allow for good-looking changes in height of the ground. I also will have to make a version that looks like wood as after climbing a little bit, it will quickly make less sense for there to be grass higher up.
-						</p>
-					</div>
-				</div>
-			</article>
-			<article>
-				<div class="ipsEntry__post">
-					<time datetime="2024-04-12T23:44:54Z" title="04/13/24 00:44" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 13, 2024</span></time>
-					<!-- Post content -->
-					<div data-ips-hook="postContent" class="ipsRichText ipsRichText--user" data-role="commentContent" data-controller="core.front.core.lightboxedImages">
-						<p>
-							I have now quickly recoloured the grass tiles to create some bark tiles which I may change later depending on how they look in context with the rest of the game. Below is a screenshot of Earthblade, the in-development next game from the Celeste team which has a few screenshot which I like to use for inspiration as they are a good example of pixel art for natural environments. I took heavy inspiration from their grass sprites in making my own. If I were to change my bark sprites in the future, I would likely use the bark in this image as inspiration. I especially like how past a certain point the sprites go black as it makes sense since a character looking at them wouldn't see into them.
-						</p>
-
-						<p>
-							<a class="ipsAttachLink ipsAttachLink_image" href="//media.invisioncic.com/x335977/monthly_2024_04/ebref.png.0f1b9301d6ab5735f7ed859f779cfbf9.png" data-fileid="2713516" data-fileext="png" rel=""><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713516" data-ratio="56.25" width="1024" alt="ebref.thumb.png.6ff27b654d4d78a6531ca17699220e35.png" src="//media.invisioncic.com/x335977/monthly_2024_04/ebref.thumb.png.6ff27b654d4d78a6531ca17699220e35.png" data-ips-lazyload-processed="1" loading="lazy" height="18.2"></a>
-						</p>
-
-						<p>
-							Below are my own grass and bark sprites:
-						</p>
-
-						<p>
-							<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713517" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713517" data-ratio="112.50" width="16" alt="image.png.53058dec278fd44fcac811210d929f5b.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.53058dec278fd44fcac811210d929f5b.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.14"></i-lightbox>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713518" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713518" data-ratio="112.50" width="16" alt="image.png.da7bdaaf3120232feddadd16d5710d32.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.da7bdaaf3120232feddadd16d5710d32.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.14"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713519" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713519" data-ratio="88.89" width="18" alt="image.png.55a51a8045e5036b1d3fe631a580898d.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.55a51a8045e5036b1d3fe631a580898d.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.2"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713520" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713520" data-ratio="88.89" width="18" alt="image.png.c6bb7e20ca65f97e9cc801e9f122597d.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.c6bb7e20ca65f97e9cc801e9f122597d.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.2"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713521" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713521" data-ratio="100.00" width="16" alt="image.png.c6d37b8fd125290ce334d93c43363d2d.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.c6d37b8fd125290ce334d93c43363d2d.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.16"></i-lightbox>
-						</p>
-
-						<p>
-							<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713522" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713522" data-ratio="112.50" width="16" alt="image.png.7f1b8d07180673b97e627dcda5ab1fb6.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.7f1b8d07180673b97e627dcda5ab1fb6.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.14"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713523" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713523" data-ratio="112.50" width="16" alt="image.png.54ecec6de2acfb6c37e38f1d1297d3ae.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.54ecec6de2acfb6c37e38f1d1297d3ae.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.14"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713524" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713524" data-ratio="88.89" width="18" alt="image.png.b46d65288e8ed47fbac6bd30b70e7072.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.b46d65288e8ed47fbac6bd30b70e7072.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.2"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713525" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713525" data-ratio="88.89" width="18" alt="image.png.d90bbb909d4f29f6b2deca09a0a7603c.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.d90bbb909d4f29f6b2deca09a0a7603c.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.2"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713526" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713526" data-ratio="100.00" width="16" alt="image.png.e9d1e9eed5929146db7e157d2ff74a84.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.e9d1e9eed5929146db7e157d2ff74a84.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.16"></i-lightbox>
-						</p>
-					</div>
-				</div>
-			</article>
-			<article>
-				<div class="ipsEntry__post">
-					<time datetime="2024-04-17T16:48:45Z" title="04/17/24 17:48" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 17, 2024</span></time>
-					<!-- Post content -->
-					<div data-ips-hook="postContent" class="ipsRichText ipsRichText--user" data-role="commentContent" data-controller="core.front.core.lightboxedImages">
-						<p>
-							Since my last post, I spent a great deal of time reworking my collisions to a predictive check and reworked my movements to support this change. In the process I did some future proofing of the scripts meaning that hopefully I won't have to spent much more, if any time reworking these two aspects of my code again. I am still behind where I had planned to be as I have not yet added doors or keys or started on the throwable acorns, but doors and keys should be two fairly simple classes which will inherit from my game object class and each have an ID int so that when the key is picked up, the door with the same ID should open. I am also thinking that I don't want any complex enemies which should save me time later.
-						</p>
-
-						<p>
-							<iframe allowfullscreen="" frameborder="0" height="360" width="640" data-ips-lazyload-processed="1" loading="lazy" src="//www.youtube.com/embed/mP3762sTDDs?rel=0"></iframe>
-						</p>
-					</div>
-				</div>
-			</article>
-			<article>
-				<div class="ipsEntry__post">
-					<time datetime="2024-04-22T12:32:26Z" title="04/22/24 13:32" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 22, 2024</span></time>
-					<!-- Post content -->
-					<div data-ips-hook="postContent" class="ipsRichText ipsRichText--user" data-role="commentContent" data-controller="core.front.core.lightboxedImages">
-						<p>
-							On Friday, I reworked my level 1 class to inherit from a parent level class which sets up the player, background, and a new loading zone GameObject since these will be present in every level and it will speed up making new levels. I also changed the update function for the levels to return a bool so that when it returns false, the next level will be loaded. This would be done when the player collides with the room loading zone GameObject.
-						</p>
-
-						<p>
-							<iframe allowfullscreen="" frameborder="0" height="360" width="640" data-ips-lazyload-processed="1" loading="lazy" src="//www.youtube.com/embed/M30nQnQkzFQ?rel=0"></iframe>
-						</p>
-					</div>
-				</div>
-			</article>
+			<div>
+				<time datetime="2024-04-05T19:26:03Z" title="04/05/24 20:26"><span class="ipsTime__long">April 5, 2024</span></time>
+				<!-- Post content -->
+				<p>
+					Since I have neglected making a post so far for this project, I will try to cover what I have done to this point in as much detail as I can remember. I will try to post more frequently going forward.
+				</p>
+				<p>
+					Firstly, I will go briefly go over my plan for the project, this will be very brief, as I have covered this in more detail in the submission. I will be making a vertical platformer, taking inspiration primarily from Celeste with a squirrel theme. The main things I plan to include aside from the platforming fundamentals of moving and jumping are, acorns which can be picked up, thrown, and used to weigh down buttons, and some form of collectible to increase replayability. I also would like to have some form of floating mechanic, but exactly how this works will depend on testing to figure out how to not make the platforming too easy with it.
+				</p>
+				<p>
+					I have designed a squirrel sprite for the protagonist which took a few iterations to iron out and will take some more when I get around to adding the animations.
+				</p>
+				<p>
+					<img class="pixelated" alt="1st iteration of squirrel character" src="/Images/SquirrelSummit/SquirrelCharacter.png">&nbsp;&rarr;&nbsp;<img class="pixelated" alt="2nd iteration of squirrel character" src="/Images/SquirrelSummit/SquirrelCharacterMod.png">&nbsp;&rarr;&nbsp;<img class="pixelated" alt="3rd iteration of squirrel character" src="/Images/SquirrelSummit/SquirrelCharacterMod2.png">
+				</p>
+				<p>
+					The first iteration's tail was a little too upright, and then the shadowing didn't quite look right on the second, so I kept making modifications until the third version which is the final one so far.
+				</p>
+				<p>
+					I designed the first version very quickly in order to get an image to display on the screen to test my display code, and then by the time I got to making collisions, I needed a sprite for a second object, so I quickly made a crate sprite as shown below. I also, for clarity made a temporary background, which currently doesn't look very good, so I will try to make a better one at some point.
+				</p>
+				<p>
+					<img alt="Box image" src="/Images/SquirrelSummit/Crate.png">
+				</p>
+				<p>
+					Currently, I am at a stage where I have basic room loading for the first room, and a circle and box collision detection system which currently prints a detected collision to the console as shown below.
+				</p>
+				<p>
+					<img alt="Console showing working collisions" src="/Images/SquirrelSummit/Collisions.png">
+				</p>
+				<p>
+					Since, I am currently, behind where I planned to be, I shall have to do a lot of work next week to attempt to catch up, but I am not too worried currently, as I don't think it should take me too long to catch back up.
+				</p>
+			</div>
+			<div>
+				<time datetime="2024-04-05T21:53:39Z" title="04/05/24 22:53" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 5, 2024</span></time>
+				<p>
+					In preparation for adding gravity to my game, and eventually jumping, I reworked my player movement system to use a velocity vector to tell the player (and other GameObjects) how to move, this way, I was able to set up a blocking box collision function to tell me what direction, a collision is happening in so that I could easily check the direction of the collision against the direction that the game object is moving in, and if they match, the velocity on the respective axis is set to 0 to stop the player (or other GameObjects) from moving through what they collided with. This means that when I come round to adding gravity, which should be as simple as decreasing the y velocity by some value multiplied by deltaTime every frame, I should be able to create some GameObjects that ignore gravity to act as a floor to stop the player (and other objects like my boxes) from falling forever., This will then enable me to make a jump mechanic, which should only take adding a static value to the y velocity on a key press (as well as some way to check that the player is on the ground, which will likely be more complex).
+				</p>
+			</div>
+			<div>
+				<time datetime="2024-04-07T23:12:55Z" title="04/08/24 00:12" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 8, 2024</span></time>
+				<p>
+					Today I first refactored a bit of my collision code so that it was all within the collision file and slightly easier for me to use in the future. Then I added a gravity variable and function to my GameObject class and called it in my character's update function. I made a variable for the gravity as if I am going to add a way for the squirrel to float in game, one way to do this is to just adjust the gravity variable (though I may decide to instead limit the downwards velocity). I added a very temporary floor sprite and then created a very basic way for the player to jump. I will most likely change this way of jumping in the future as it currently checks if the vertical velocity is 0 to ensure that the player can jump which could in theory happen in the air and cause bugs later on.
+				</p>
+				<p>
+					<iframe src="//www.youtube.com/embed/K6yv9fEf5gI?rel=0"></iframe>
+				</p>
+				<p>
+					Above is a video showcasing the gravity, jumping and collisions working in my game. The values for gravity and jump strength are not final, but I will need to know more about how the game will look in terms of platforms to better understand how the gravity and jump height affect the gameplay.
+				</p>
+				<p>
+					When I was testing my game, I also found some bugs as shown below.
+				</p>
+				<p>
+					<iframe src="//www.youtube.com/embed/n9j6M6wm81U?rel=0"></iframe>
+				</p>
+				<p>
+					Based on my testing, I have figured out that the second bug is caused by an interaction with the collision with the box, and the way that I have done my movement. The first is more simple and happens when holding right and then pressing and releasing left. When I next work on my game, I will try to figure out what exactly are the issues and fix them.
+				</p>
+			</div>
+			<div>
+				<time datetime="2024-04-12T23:20:03Z" title="04/13/24 00:20" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 13, 2024</span></time>
+				<!-- Post content -->
+				<p>
+					Over the course of this week, I have fixed the bugs showcased in my previous post by reworking my movement system. The player now moves by accelerating up to a maximum velocity, and stops by decelerating twice as quickly. I also decided to try and base the movement speed and jumps heights off of how quickly squirrels run and jump. I did this by imagining each pixel to be approximately 1 cm, which also happened to line up with the height of my character. I found a value online saying that squirrels can run at up to 20 mph which is about 894 cm/s, when I tested this value in game, the squirrel moved way to quickly and was off the screen by the time it reached its top speed, so I decreased this significantly to 400 pixels per second. For the acceleration, I couldn't find a value online, so I just guessed 800 pixels per second squared since I know that squirrels can accelerate quickly to escape predators. I found that squirrels can jump over two meters, so setting gravity at approximately 980 pixels per second squared, I calculated an initial velocity of 627 pixels per second to allow the squirrel to jump 200 pixels. Plugging these values as well as a terminal velocity for falling of 1028 pixels per second, revealed a glitch that I was hoping to avoid which is that the squirrel can fall too quickly for my current collision checks meaning that I will have to rework my collision to be predictive. In other words, the squirrel can currently move from one side of the collision boundary to the other in less than a frame so I will have to include a calculation to check if the character will have moved through the boundary and then stop it on top of the boundary.
+				</p>
+				<p>
+					<iframe src="//www.youtube.com/embed/qBGs3m-MH5Q?rel=0"></iframe>
+				</p>
+				<p>
+					I also created new sprites for the ground as can be seen in the video. I first created the one for the top layer of grass which is 16x18 pixels, I then rotated this around to make side and bottom versions, and created a brown 16x16 sprite for middle layers. I will likely need to make inside and outside corner versions to allow for good-looking changes in height of the ground. I also will have to make a version that looks like wood as after climbing a little bit, it will quickly make less sense for there to be grass higher up.
+				</p>
+			</div>
+			<!-- Add bark tiles next -->
+			<div>
+				<time datetime="2024-04-12T23:44:54Z" title="04/13/24 00:44" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 13, 2024</span></time>
+				<!-- Post content -->
+				<p>
+					I have now quickly recoloured the grass tiles to create some bark tiles which I may change later depending on how they look in context with the rest of the game. Below is a screenshot of Earthblade, the in-development next game from the Celeste team which has a few screenshot which I like to use for inspiration as they are a good example of pixel art for natural environments. I took heavy inspiration from their grass sprites in making my own. If I were to change my bark sprites in the future, I would likely use the bark in this image as inspiration. I especially like how past a certain point the sprites go black as it makes sense since a character looking at them wouldn't see into them.
+				</p>
+				<p>
+					<img class="pixelated" alt="Screenshot from Earthblade" src="/Images/SquirrelSummit/earthblade.png">
+				</p>
+				<p>
+					Below are my own grass and bark sprites:
+				</p>
+				<p>
+					<img class="pixelated" alt="Top grass" src="/Images/SquirrelSummit/FloorTileTopMiddle.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img class="pixelated" alt="Down grass" src="/Images/SquirrelSummit/FloorTileBottomMiddle.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img class="pixelated" alt="Left grass" src="/Images/SquirrelSummit/FloorTileCenterLeft.png">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+					<img class="pixelated" alt="Right grass" src="/Images/SquirrelSummit/FloorTileCenterRight.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img class="pixelated" alt="Left grass" src="/Images/SquirrelSummit/FloorTileMiddle.png">
+				</p>
+				<p>
+					<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713522" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713522" data-ratio="112.50" width="16" alt="image.png.7f1b8d07180673b97e627dcda5ab1fb6.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.7f1b8d07180673b97e627dcda5ab1fb6.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.14"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713523" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713523" data-ratio="112.50" width="16" alt="image.png.54ecec6de2acfb6c37e38f1d1297d3ae.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.54ecec6de2acfb6c37e38f1d1297d3ae.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.14"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713524" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713524" data-ratio="88.89" width="18" alt="image.png.b46d65288e8ed47fbac6bd30b70e7072.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.b46d65288e8ed47fbac6bd30b70e7072.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.2"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713525" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713525" data-ratio="88.89" width="18" alt="image.png.d90bbb909d4f29f6b2deca09a0a7603c.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.d90bbb909d4f29f6b2deca09a0a7603c.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.2"></i-lightbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i-lightbox data-wrappedlink="" data-ipslightbox="" href="https://daf.staffs.ac.uk/applications/core/interface/js/spacer.png" data-fileid="2713526" data-ipslightbox-group="g11823"><img class="ipsImage ipsImage_thumbnailed" data-fileid="2713526" data-ratio="100.00" width="16" alt="image.png.e9d1e9eed5929146db7e157d2ff74a84.png" src="//media.invisioncic.com/x335977/monthly_2024_04/image.png.e9d1e9eed5929146db7e157d2ff74a84.png" title="Enlarge image" data-ips-lazyload-processed="1" loading="lazy" height="0.16"></i-lightbox>
+				</p>
+			</div>
+			<div>
+				<time datetime="2024-04-17T16:48:45Z" title="04/17/24 17:48" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 17, 2024</span></time>
+				<!-- Post content -->
+				<p>
+					Since my last post, I spent a great deal of time reworking my collisions to a predictive check and reworked my movements to support this change. In the process I did some future proofing of the scripts meaning that hopefully I won't have to spent much more, if any time reworking these two aspects of my code again. I am still behind where I had planned to be as I have not yet added doors or keys or started on the throwable acorns, but doors and keys should be two fairly simple classes which will inherit from my game object class and each have an ID int so that when the key is picked up, the door with the same ID should open. I am also thinking that I don't want any complex enemies which should save me time later.
+				</p>
+				<p>
+					<iframe allowfullscreen="" frameborder="0" height="360" width="640" data-ips-lazyload-processed="1" loading="lazy" src="//www.youtube.com/embed/mP3762sTDDs?rel=0"></iframe>
+				</p>
+			</div>
+			<div>
+				<time datetime="2024-04-22T12:32:26Z" title="04/22/24 13:32" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">April 22, 2024</span></time>
+				<!-- Post content -->
+				<p>
+					On Friday, I reworked my level 1 class to inherit from a parent level class which sets up the player, background, and a new loading zone GameObject since these will be present in every level and it will speed up making new levels. I also changed the update function for the levels to return a bool so that when it returns false, the next level will be loaded. This would be done when the player collides with the room loading zone GameObject.
+				</p>
+				<p>
+					<iframe allowfullscreen="" frameborder="0" height="360" width="640" data-ips-lazyload-processed="1" loading="lazy" src="//www.youtube.com/embed/M30nQnQkzFQ?rel=0"></iframe>
+				</p>
+			</div>
 			<article>
 				<div class="ipsEntry__post">
 					<time datetime="2024-05-06T23:56:23Z" title="05/07/24 00:56" data-short="2 yr" class="ipsTime ipsTime--long"><span class="ipsTime__long">May 7, 2024</span></time>
