@@ -34,7 +34,16 @@
                 <div>
                     <a href="#litIntroduction">Introduction</a>
                     <a href="#historyOfPhysicalModels">History of Physical Models</a>
+                    <a href="#newtonianGravity">Newtonian Gravity</a>
+                    <a href="#relativity">Relativity</a>
+                    <a href="#comparison">Comparison</a>
+                    <a href="#multiple-bodyProblem">Multiple-body Problem</a>
+                    <a href="#gravityInGames">Gravity in Games</a>
+                    <a href="#optimisation">Optimisation</a>
+                    <a href="#litConclusion">Conclusion</a>
                 </div>
+                <a href="#researchMethodologies">Research Methodologies</a>
+                <a href="#references">References</a>
             </div>
         </section>
         <section id="abstract">
@@ -109,14 +118,14 @@
             <div id="litIntroduction">
                 <h3>Introduction</h3>
                 <p>
-                    Over the course of this literature review, 
-                    the researcher will explore the evolution of physical models for gravity as well as their implementation in video games to later inform an artefact that will be made to test a 2D implementation and optimisation of physics-based gravity in a solar-system model. 
+                    Over the course of this literature review, the researcher will explore the evolution of physical models for gravity as well as their implementation in video games 
+                    to later inform an artefact that will be made to test a 2D implementation and optimisation of physics-based gravity in a solar-system model. 
                     The review will begin by looking at the historical context leading to Newton’s Gravitational Model before looking in more depth at that model and subsequently exploring the understanding of gravity in the Theory of General Relativity. 
                     Following this, specific research will be done into the multiple body problem, before looking at relevant optimisation techniques.
                 </p>
             </div>
             <div id="historyOfPhysicalModels">
-                <h3>History of physical models</h3>
+                <h3>History of Physical Models</h3>
                 <p>
                     The origin of science-based cosmological models can be traced back to Pythagorean philosophy from the 6th century BC 
                     (largely attributed to Philolaus <a href="#zhmud">(Zhmud, 2012)</a>) which taught of a round Earth which spun on an axis with all of the heavenly bodies orbiting a central fire 
@@ -127,21 +136,580 @@
                     this led to its eventual replacement in the 4th century BC by Aristotle. 
                 </p>
                 <p>
-                    In the 4th century BC, Aristotle established evidence-based arguments as to why the Earth is spherical. In his book, <i>On The Heavens</i>, he noted that the Earth’s shadow on the moon was always round which would only be caused by a spherical Earth unless it was a disc with the Sun directly under the centre. Another argument was due to the position of the North Star being higher in the sky towards the north of the Earth. Aristotle also held that the Earth was a fixed point which the rest of the heavens orbited around although he had no scientific evidence for this. Ptolemy, in the 2nd century AD, later built on this idea to put forward a more concrete geocentric model. This model put 8 spheres around the Earth carrying the moon, the five known planets with the Sun between Venus and Mars, and finally the fixed stars on the outermost layer. The system required the planets moving about smaller circles attached to their spheres to account for their perceived paths in the sky and, more problematically, the path put forward for the moon would make it twice as close to the Earth at some moments in time compared to others, which would suggest that at times it should appear twice as big as at others. This was a flaw that Ptolemy recognised, but due in part to the model’s acceptance from the Catholic Church, the model remained largely unchallenged until the 16th century by Copernicus <a href="#hawking">(Hawking, 2016)</a>.
+                    In the 4th century BC, Aristotle established evidence-based arguments as to why the Earth is spherical. 
+                    In his book, <i>On The Heavens</i>, he noted that the Earth’s shadow on the moon was always round which would only be caused by a spherical Earth unless it was a disc with the Sun directly under the centre. 
+                    Another argument was due to the position of the North Star being higher in the sky towards the north of the Earth. 
+                    Aristotle also held that the Earth was a fixed point which the rest of the heavens orbited around although he had no scientific evidence for this. 
+                    Ptolemy, in the 2nd century AD, later built on this idea to put forward a more concrete geocentric model. 
+                    This model put 8 spheres around the Earth carrying the moon, the five known planets with the Sun between Venus and Mars, and finally the fixed stars on the outermost layer. 
+                    The system required the planets moving about smaller circles attached to their spheres to account for their perceived paths in the sky and, more problematically, 
+                    the path put forward for the moon would make it twice as close to the Earth at some moments in time compared to others, which would suggest that at times it should appear twice as big as at others. 
+                    This was a flaw that Ptolemy recognised, but due in part to the model’s acceptance from the Catholic Church, the model remained largely unchallenged until the 16th century by Copernicus <a href="#hawking">(Hawking, 2016)</a>.
                 </p>
                 <p>
-                    Copernicus put forward the simpler idea that the planets including Earth went through circular orbits around a stationary Sun although this theory was not taken seriously (in part due to the predicted orbits not properly lining up with the observable evidence) until almost a century later when Kepler and Galileo started to support the theory <a href="#hawking">(Hawking, 2016)</a>.
+                    Copernicus put forward the simpler idea that the planets including Earth went through circular orbits around a stationary Sun although this theory was not taken seriously 
+                    (in part due to the predicted orbits not properly lining up with the observable evidence) until almost a century later when Kepler and Galileo started to support the theory <a href="#hawking">(Hawking, 2016)</a>.
                 </p>
                 <p>
-                    Kepler was one of the first astronomers to attempt to move towards physical reason over geometric reason. Until this point, many models had observed eccentricity of orbits, in other words it was known that the supposed circular orbits were not centred around the focus of the orbit but instead slightly offset. This meant that under the Copernican system, the planets would at some point be closer in the orbits to the Sun. For all of the planets but the Earth, this meant that they moved faster as they were closer to the Sun. Kepler reasoned that since the Sun appeared to be the cause of the planetary movement, the Earth must also move faster in its orbit as it approached the Sun. With the help of Brahe’s meticulous observations, he mapped the orbit of the Earth about the Sun and stumbled upon his law of areas (the line swept out between a planet and the sun always forms an equal area in equal time periods <a href="#wilson">(Wilson, 1972)</a>) as a shortcut. This worked at the near and far points of the orbit, but for the rest of it, the areas were wrong, however, assuming that his law was true, he realised that the areas would be correct if the orbit was elliptical with the Sun being a focus <a href="#gingerich">(Gingerich, 2009)</a>.
+                    Kepler was one of the first astronomers to attempt to move towards physical reason over geometric reason. 
+                    Until this point, many models had observed eccentricity of orbits, in other words it was known that the supposed circular orbits were not centred around the focus of the orbit but instead slightly offset. 
+                    This meant that under the Copernican system, the planets would at some point be closer in the orbits to the Sun. 
+                    For all of the planets but the Earth, this meant that they moved faster as they were closer to the Sun. 
+                    Kepler reasoned that since the Sun appeared to be the cause of the planetary movement, the Earth must also move faster in its orbit as it approached the Sun. 
+                    With the help of Brahe’s meticulous observations, he mapped the orbit of the Earth about the Sun and stumbled upon his law of areas 
+                    (the line swept out between a planet and the sun always forms an equal area in equal time periods <a href="#wilson">(Wilson, 1972)</a>) as a shortcut. 
+                    This worked at the near and far points of the orbit, but for the rest of it, the areas were wrong, however, assuming that his law was true, 
+                    he realised that the areas would be correct if the orbit was elliptical with the Sun being a focus <a href="#gingerich">(Gingerich, 2009)</a>.
                 </p>
                 <p>
-                    In 1609, Galileo learned of a device using two lenses which brought distant images closer. When he discovered how it worked, he began working to improve its amplification capabilities, inventing the telescope. Using this, he discovered three main things: Jupiter had four moons which orbited around it, this suggested that the Earth did not have to be the focus of the orbits of all the heavenly bodies <a href="#hawking">(Hawking, 2016)</a>; Venus goes through phases similar to the Moon, suggesting that it orbited around the Sun instead of the Earth <a href="#chow">(Chow, 2024)</a>; the surface of the moon was covered in mountains, craters, and seas, making it remarkably Earth-like, not just a smooth, crystalline ball <a href="#gingerich">(Gingerich, 2009)</a>. None of this proved that the Earth also orbited the Sun, but it did suggest that the Earth was less singular than previously thought when compared to the observable satellites. This gave less reason for the Earth to be believed to be unique in its lack of movement too, which was important given the religious landscape. A non-geocentric model was incredibly hard to support due to persecution by both the Catholic and Protestant churches at the time.
+                    In 1609, Galileo learned of a device using two lenses which brought distant images closer. 
+                    When he discovered how it worked, he began working to improve its amplification capabilities, inventing the telescope. 
+                    Using this, he discovered three main things: Jupiter had four moons which orbited around it, 
+                    this suggested that the Earth did not have to be the focus of the orbits of all the heavenly bodies <a href="#hawking">(Hawking, 2016)</a>; 
+                    Venus goes through phases similar to the Moon, suggesting that it orbited around the Sun instead of the Earth <a href="#chow">(Chow, 2024)</a>; 
+                    the surface of the moon was covered in mountains, craters, and seas, making it remarkably Earth-like, not just a smooth, crystalline ball <a href="#gingerich">(Gingerich, 2009)</a>. 
+                    None of this proved that the Earth also orbited the Sun, but it did suggest that the Earth was less singular than previously thought when compared to the observable satellites. 
+                    This gave less reason for the Earth to be believed to be unique in its lack of movement too, which was important given the religious landscape. 
+                    A non-geocentric model was incredibly hard to support due to persecution by both the Catholic and Protestant churches at the time.
                 </p>
                 <p>
-                    Together, Galileo and Kepler had managed to promote the idea of a heliocentric model with elliptical orbits, though they could not explain what kept the planets in these orbits. The last element required to bridge the gap to Newton is the physical principles and geometry of Descartes as these were theories that Newton was raised on <a href="#brackenridge">(Brackenridge, 1996)</a>. In the 17th century, Descartes published his <i>Principia philosophiae</i> in which he details two laws of motion. Firstly, he observed that the effort required to bring an object to motion from rest is equivalent to the effort required to bring an object from rest to motion. This led him to describe motion as a relative property where under no external force an object will remain in its state whether that be at rest or in motion. Secondly, now that undisturbed motion has been defined to continue, he clarifies that the motion must be in a straight line, thus curved motion must be under a force <a href="#baigrie">(Baigrie, 1992)</a>. These laws together defined inertial mechanics and would later be adapted by Newton into his first law of motion; they also reveal that there must be a force acting upon the planets to keep them in their orbits. 
+                    Together, Galileo and Kepler had managed to promote the idea of a heliocentric model with elliptical orbits, though they could not explain what kept the planets in these orbits. 
+                    The last element required to bridge the gap to Newton is the physical principles and geometry of Descartes as these were theories that Newton was raised on <a href="#brackenridge">(Brackenridge, 1996)</a>. 
+                    In the 17th century, Descartes published his <i>Principia philosophiae</i> in which he details two laws of motion. 
+                    Firstly, he observed that the effort required to bring an object to motion from rest is equivalent to the effort required to bring an object from rest to motion. 
+                    This led him to describe motion as a relative property where under no external force an object will remain in its state whether that be at rest or in motion. 
+                    Secondly, now that undisturbed motion has been defined to continue, he clarifies that the motion must be in a straight line, thus curved motion must be under a force <a href="#baigrie">(Baigrie, 1992)</a>. 
+                    These laws together defined inertial mechanics and would later be adapted by Newton into his first law of motion; they also reveal that there must be a force acting upon the planets to keep them in their orbits. 
                 </p>
             </div>
+            <div id="newtonianGravity">
+                <h3>Newtonian Gravity</h3>
+                <p>
+                    Newton’s unique perspective and breakthrough came from ignoring the Platonic drive to find circularity and the Cartesian challenge of looking for mechanical cause <a href="#brackenridge">(Brackenridge, 1996)</a>.
+                    Since Descartes viewed force as a property of a body which let it interact with another, he was held up looking for vortices of matter to push the planets around their orbits <a href="#baigrie">(Baigrie, 1992)</a>.
+                    Newton only concerned himself with looking for a mathematical description of the force required to hold a planet in its orbit, thus allowing him to develop a theory of universal gravitation. 
+                    Another misstep that was obscuring the discovery of gravity was the idea of a centrifugal force which pushed outwards on objects being spun in a circle. 
+                    It was only when Hooke asked Newton to comment on some of his hypotheses that Newton was introduced to the idea of breaking an orbit down into a tangential inertia and a centripetal force pulling towards the focus of the orbit. 
+                    What Hooke lacked was the focus on Kepler’s law of areas to bridge the gap to proving the idea <a href="#cohen">(Cohen, 1981)</a>.
+                </p>
+                <p>
+                    Newton’s cosmological ideas are primarily put forward in his <i>Philosophiae Naturalis Principia Mathematica</i> where he first provides a proof for Kepler’s law of areas. 
+                    The first part of the proof describes a line split in equal segments representing inertial movement in equal periods of time, at a distance h above the line lies point P. 
+                    Any triangle formed between a segment of the line and P will have the same area since each base is equal in length and h is constant. 
+                    Where Kepler stumbled onto the law of areas seemingly at random, Newton shows with this simple idea an inherent connection between inertia and the law <a href="#cohen">(Cohen, 1981)</a>.
+                    The proof then goes on to add instantaneous forces at each interval and geometrically shows that the triangles formed are still equal in area. 
+                    At the limit as the time interval approaches zero, this path becomes a smooth orbit thus proving that a centripetal force causes a curve which follows the law of areas. 
+                    Going forward, Newton proves the inverse: that a curve which follows the law of areas must suggest a centripetal force. 
+                    Newton ultimately proved that an inertial orbit following the law of areas must have a force that is proportionally inverse to the square of the distance between the bodies’ centres of mass. 
+                </p>
+                <p>
+                    Newton’s full formulation of the law of gravitation is that the force of gravity between two bodies is 
+                    proportional to the product of their mass and inversely proportional to the square of the distance between their centres of mass <a href="#whittaker">(Whittaker, 1989)</a>.
+                    The gravitational constant connecting these values is 
+                    <math>
+                        <mrow>
+                            <mn>6.673</mn> 
+                            <mo>&times;</mo> 
+                            <mrow>
+                                <msup>
+                                    <mn>10</mn>
+                                    <mrow>
+                                        <mo>&minus;</mo>
+                                        <mn>11</mn>
+                                    </mrow>
+                                </msup>
+                            </mrow>
+                        </mrow>
+                    </math>, known as <math><mi>G</mi>.</math>. The full equation is as below.
+                </p>
+                <p>
+                    <math display="block">
+                        <mrow>
+                            <mi>F</mi>
+                            <mo>=</mo>
+                            <mi>G</mi>
+                            <mfrac>
+                                <mrow>
+                                    <msub>
+                                        <mi>m</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                    <msub>
+                                        <mi>m</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                </mrow>
+                                <mrow>
+                                    <msup>
+                                        <mi>r</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mrow>
+                            </mfrac>
+                        </mrow>
+                    </math>
+                </p>
+                <p>
+                    This is a remarkably simply equation for such an all-encompassing concept making it a very compelling choice to use in a simulation. 
+                    All of the mathematics involved uses functions that, on most modern computers, can be dealt with at constant latency <a href="#fog">(Fog, 2025)</a>.
+                </p>
+            </div>
+            <div id="relativity">
+                <h3>Relativity</h3>
+                <p>
+                    Einstein’s theory of Special Relativity, published in 1905, discards the Newtonian ideas of absolute space and time, replacing them with relativistic spacetime. 
+                    This theory would later serve as the basis for general relativity and thus immediately creates a barrier-to-entry for making simulations of physics-based gravity using it. 
+                    This is because computer programs inherently have a form of absolute time in the way that they run. 
+                    Thus, in order to gain any benefits of relativity, this major drawback would have to be overcome <a href="#choquet-bruhat">(Choquet-Bruhat, 2023)</a>.
+                </p>
+                <p>
+                    Einstein found that Newtonian mechanics violated Special Relativity due to the force of gravity propagating at infinite speed in order for gravity to take instantaneous effect. 
+                    This led him to develop the theory of General Relativity as a way to describe the effects of gravity without violating Special Relativity. 
+                    Under General Relativity, gravity is not a force, but a result of the curvature of spacetime <a href="#perkowitz">(Perkowitz, 2025)</a>.
+                </p>
+                <p>
+                    One of the most notable predictions of General Relativity is the curvature of light rays. 
+                    Under general relativity, an equivalence between mass and energy is drawn, represented by the famous equation:
+                    <math>
+                        <mrow>
+                            <mi>e</mi>
+                            <mo>=</mo>
+                            <msup>
+                                <mrow>
+                                    <mi>m</mi>
+                                    <mi>c</mi>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                        </mrow>
+                    </math>
+                    where <math><mi>e</mi></math> is energy, <math><mi>m</mi></math> is mass, and <math><mi>c</mi></math> is the speed of light.
+                    This equivalence specifically predicts a gravitational effect on zero-mass particles like photons due to the relation between an object’s mass and the force of gravity affecting it. 
+                    This suggests that light should be deflected when passing by high mass objects <a href="#choquet-bruhat">(Choquet-Bruhat, 2023)</a>.
+                </p>
+                <p>
+                    The force of gravity under general relativity is given by the equation:
+                </p>
+                <p>
+                    <math display="block">
+                        <mrow>
+                            <msub>
+                                <mi>F</mi>
+                                <mi>f</mi>
+                            </msub>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mi>r</mi>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mrow>
+                                <mo>&minus;</mo>
+                                <mfrac>
+                                    <mrow>
+                                        <mi>G</mi>
+                                        <mi>M</mi>
+                                        <mi>m</mi>
+                                    </mrow>
+                                    <mrow>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </mfrac>
+                            </mrow>
+                            <mo>+</mo>
+                            <mrow>
+                                <mfrac>
+                                    <mrow>
+                                        <msup>
+                                            <mi>L</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>m</mi>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mrow>
+                                </mfrac>
+                            </mrow>
+                            <mo>&minus;</mo>
+                            <mrow>
+                                <mfrac>
+                                    <mrow>
+                                        <mn>3</mn>
+                                        <mi>G</mi>
+                                        <mi>M</mi>
+                                        <msup>
+                                            <mi>L</mi> 
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>m</mi>
+                                        <msup>
+                                            <mi>c</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>4</mn>
+                                        </msup>
+                                    </mrow>
+                                </mfrac>
+                            </mrow>
+                        </mrow>
+                    </math>
+                </p>
+                <p>
+                    where <math><mi>L</mi></math> is the angular momentum, <math><mi>G</mi></math> is the gravitational constant, <math><mi>m</mi></math> is the mass of the orbitting body, and <math><mi>M</mi></math> is the mass of the larger body.
+                    The first term is essentially the same as the Newtonian equation for gravitational force.
+                </p>
+            </div>
+            <div id="comparison">
+                <h3>Comparison</h3>
+                <p>
+                    The predictions of Newtonian Mechanics are similar to those of General Relativity and give relatively accurate results for acceleration of objects moving slowly compared to the speed of light <a href="#bekenstein">(Bekenstein, 1991)</a>.
+                    This means that in a setting like a simulation of a solar system, it is likely that Newtonian Mechanics will provide a quick and accurate solution where Relativity may lack efficiency for little benefit.
+                </p>
+                <p>
+                    One more major difference between Relativity and Newtonian Mechanics is the difference between deflection of light under each model. 
+                    Although Newtonian Mechanics can predict the deflection of light, 
+                    by substituting Newton’s second law into the force equation under Newtonian Gravity to cancel the mass of the light and calculate an acceleration to deflect the light by, 
+                    the result it predicts is half the result predicted by Relativity <a href="#dyson">(Dyson, Eddington and Davidson, 1920)</a>.
+                    More recently however, this result has been disputed, 
+                    suggesting that the Newtonian prediction was actually more accurate than the prediction under relativity unless a term is added which then makes Relativity only marginally more accurate <a href="#xiaochun">(Xiaochun, 2022)</a>.
+                    Ultimately deflection of light is a very minor adjustment for an expensive set of calculations and will likely be irrelevant to a simulation of the kind this research is to support.
+                </p>
+                <p>
+                    Due to the similarity in accuracy between the two models and the much lighter computational load of Newtonian Mechanics, this model will be taken to be the better one when informing the implementation of mass-based physics in video games.
+                </p>
+            </div>
+            <div id="multiple-bodyProblem">
+                <h3>Multiple-body Problem</h3>
+                <p>
+                    The multiple-body problem is the name typically given to the problem of predicting the motion of multiple bodies (represented as particles) whose initial state is known, and which act only under the gravitational forces between them. 
+                    The most trivial version of this is the two-body problem. 
+                    Since Newton’s second law in respect to a body’s position and time is a second order differential equation, the two-body problem can be solved by adding and subtracting the equations for each body. 
+                    An exact solution is given in which both bodies always remain on the same plane and the centre of mass between them is motionless <a href="#peale">(Peale, 2023)</a>.
+                </p>
+                <p>
+                    When adding a third body or more, the problem becomes chaotic as there are too many unknowns to form a general solution. 
+                    Various specific solutions have been developed however, such as the restricted three-body problem in which one of the bodies is treated as massless essentially expressing the problem as a two-body problem with an extra body. 
+                    This is useful for cases such as the Sun, Earth and the Moon in which the Moon can be treated as massless since, relative to the other two, the Moon’s mass is small <a href="#barrow-green">(Barrow-Green, 1993)</a>.
+                </p>
+                <p>
+                    It has also been noted that at the scale of known solar systems with one star, in practice, 
+                    the multiple body problem can be reduced down to a series of two-body problems with respect to the central star and each planet due to the immense distances between each planet. 
+                    This gives a high degree of precision over a long period of time, although in a game setting, it could reduce the opportunities for emergent behaviour. 
+                    For example, if there were a way to knock planets out of their orbits, 
+                    the system losing that planet would not experience extreme side effects when the planets are distant enough to begin with which may be less fun from a player perspective <a href="#peale">(Peale, 2023)</a>.
+                </p>
+            </div>
+            <div id="gravityInGames">
+                <h3>Gravity in Games</h3>
+                <p>
+                    The history of gravity in video games can be traced back as far as <i>Tennis for Two</i> (1958) as it reflects a tennis match played from the side. 
+                    The addition of gravity to the game and others like it helped to add a level of relatability and interactivity for players despite the simplistic graphics <a href="#wardrip-fruin">(Wardrip-Fruin, 2019)</a>.
+                    Wardrip-Frurin points out that, aside from <i>Pong</i> (1972),
+                    many early games succeeded due to their implementation of gravity with a major component in <i>Pong</i>’s success being its flipped perspective which invites the player to assume a gravity. 
+                    This is reflected still in the gaming landscape today in which the majority of video games implement gravity in some way with the largest set of notable exceptions being in top-down 2D games.
+                </p>
+                <p>
+                    Despite this, even today, most video games use implementations of gravity no more complex than those used in the 50s and 60s. 
+                    These are implementations in which non-static objects are attracted in a set direction (generally directly downward like in <i>Tennis for Two</i>) or towards a specific point (such as the central star in <i>Spacewar!</i> (1962)). 
+                    An example of a modern game that uses both of these classic methods is <i>Lovers in a Dangerous Spacetime</i> (2015): players control characters who are attracted downward towards the bottom of their spaceship; 
+                    the spaceship is in turn attracted towards the centre of planets although only when within a specific range. 
+                    This game also has an enemy that walks along the surface of planets, however as many of the planets generate no intrinsic gravity, 
+                    this is implemented by using raycasts to hold the enemy next to the terrain with some additional logic to rotate it naturally <a href="#winkels">(Winkels, 2014)</a>.
+                    This is a common flaw of this type of implementation of gravity: due to its over-simplified nature, many exceptions are needed instead of building from the same gravitational foundation.
+                </p>
+                <p>
+                    Other games opt for a more complex approach such as <i>Super Mario Galaxy</i> (2007). 
+                    Yoshiaki Koizumi, who was also the director of the <i>Mario 128</i> (2000) technical demonstration for the <i>GameCube</i>, wanted to expand the idea from <i>Mario 128</i>, 
+                    which took place on a flying saucer-shaped platform, into a game where Mario could walk freely around a spherical platform <a href="#iwata">(Iwata, 2007)</a>.
+                    The solution the developers came up with to implement gravity in this way utilised a kind of container which would tell the player character how to react to gravity depending on which container he is within. 
+                    These “gravity fields” came in a variety of different types including: spherical; parallel; cubic; toroid; conical; cylindrical; etc. <a href="#jasper">(Jasper, 2020)</a>.
+                    Spherical and parallel fields represent the traditional two forms of gravity with spherical pulling inward towards a central point like in <i>Spacewar!</i> and parallel pulling in a set direction like in <i>Tennis for Two</i>.
+                    These two can also with varying degrees of success be recreated with mass-based gravity implementations as spherical gravity is the typical result of using mass-based gravity and on a large enough scale can appear parallel like in the real world. 
+                    As a practical use in a game however, this form of parallel gravity could only really be used with a large star or black hole at the edge of a simulated universe or something similar, 
+                    thus being less versatile than <i>Super Mario Galaxy</i>’s implementation. 
+                    The only other of these fields that could potentially be recreated with mass-based gravity would be toroid gravity, 
+                    although it would operate slightly differently as the gravity on the inner side of the torus would be weaker than the outer side due to the mass of the torus above. 
+                    Overall, <i>Super Mario Galaxy</i>, and its sequel <i>Super Mario Galaxy 2</i> (2010) are space games that opt for creativity over realism in their implementation of gravity. 
+                    This makes them examples of a type of game where mass-based gravity would not be applicable but also highlights some of the interesting differences that mass-based gravity could cause such as gravity on toroid planets.
+                </p>
+                <p>
+                    <i>Outer Wilds</i> (2020) is a video game set in space which uses Newtonian mechanics as the basis for its system of gravity and cosmology. 
+                    The entire solar system is kept in orbit around the sun in real-time by its gravity with space being represented with no intrinsic friction or gravity, contrary to the way that many games approach space. 
+                    This makes the game’s spaceflight less intuitive to players as simply ceasing acceleration does not cause a deceleration. It is therefore more realistic and dangerous. 
+                    Due to the instability that gravity-based orbits and some of the other systems introduce to the simulation, it is only run for twenty minutes before resetting. 
+                    This prevents the simulation from either devolving into chaos or reaching an unintended state of equilibrium <a href="#beachum">(Beachum, 2013)</a>.
+                    A key difference between Newtonian mechanics and the implementation of gravity in <i>Outer Wilds</i>, 
+                    is that most of the effects of gravity calculate the force with an inverse linear relationship to the distance instead of an inverse square relationship, with exceptions being from the sun or a specific moon which use inverse square. 
+                    Practically, this means that the falloff for the force of gravity in most cases is considerably lower, giving more consistent gravitational forces at the scale of the game. 
+                    The gravity from the sun is still inverse square as this allows for the elliptical orbits of the planets which otherwise would not orbit correctly. 
+                    For the moon, this simply means that the player is less affected by its gravity when standing on the nearby planet due to the increased falloff <a href="#xen">(xen-42, 2023)</a>.
+                </p>
+                <p>
+                    The biggest change that <i>Outer Wilds</i> makes from real Newtonian mechanics, is that it opts to have each planet ignore the gravitational effects of other planets, 
+                    thereby completely circumventing the issue of the multiple-body problem and the instability that would cause. 
+                    This makes planetary orbits more stable and also reduced the performance impact of each planet, 
+                    allowing the planets to be closer to one another and still having orbits that remain stable over the twenty-minute cycle of the game <a href="#torres">(Torres, 2024)</a>.
+                    Overall, <i>Outer Wilds</i> provides a good starting point for how more realistic simulations of gravity can be used in video games, but it still uses many shortcuts and workarounds to provide a fun and playable world.
+                </p>
+            </div>
+            <div id="optimisation">
+                <h3>Optimisation</h3>
+                <p>
+                    There is little literature about the optimisation of cosmological models for video games. 
+                    As such the majority of this section of the review will focus on more general physical optimisations with suggestions as to how they could be changed to instead work for gravitational models.
+                </p>
+                <p>
+                    The first technique to discuss in physical optimisations will be broad-phase collision checks. 
+                    The fundamental idea behind these is to use simpler and less accurate collision checks to decide what is worth spending more time on for more accurate checks <a href="#szauer">(Szauer, 2017)</a>.
+                    There are a variety of techniques involved in the broad phase which can generally be broken down into simplification of shapes, and spatial and temporal reasoning. 
+                    Shape simplification is unlikely to be helpful in the case of gravity optimisations as gravity already has uniform effects in all directions. 
+                    Temporal reasoning is also unlikely to be useful as it is mainly useful for static objects, which in a space simulation with Newtonian gravity, should not exist. 
+                    The final option, spatial reasoning, is about narrowing down which objects could collide with each other through means such as axis separation <a href="#cao">(Cao and Wang, 2023)</a>.
+                    A modification of this idea could be used to decide which objects are light enough or far enough away to cause a negligible impact on the acceleration of other objects.
+                </p>
+                <p>
+                    A notable form of spatial reasoning is binary space partitioning (BSP), particularly in the form of quadtrees or k-d trees. 
+                    Binary space partitioning is the process of creating a binary tree by repeatedly subdividing a space into two smaller sets. 
+                    The end result is a tree which can be very useful for sorting and searching data <a href="#fuchs">(Fuchs, Bruce and Naylor, 1980)</a>.
+                    Quadtrees are a type of BSP tree which split the data down the middle of the defined region on each 2-dimensional axis creating 4 child branches with varying quantities of nodes on each branch. 
+                    These do a good job at splitting up objects and are easy to modify at runtime, 
+                    but have the disadvantage of being unbalanced meaning that some nodes will take longer to reach due to being much more deeply embedded in the tree whilst some branches are completely empty. 
+                    K-d trees are another form of BSP tree which instead find the middle node and create branches either side of it in the specified dimension, cycling through each dimension. 
+                    This method of partitioning the nodes results in a balanced tree which is generally better for searching through but has the added complexity of finding the median node to sort around. 
+                    A common optimisation for implementations with frequently changing data is to take a set number of randomly selected nodes and find the median of that set instead of the whole list, 
+                    this still gives a fairly balanced tree most of the time but is less precise <a href="#hristov">(Hristov, 2025)</a>.
+                </p>
+                <p>
+                    Threading is another common method for optimisation. 
+                    Threading involves passing parts of the codebase onto separate threads to create concurrent code with the end goal of parallelism&mdash;for the CPU to be able to execute code simultaneously across multiple cores. 
+                    Threading is highly applicable to various kinds of optimisation problems as it only requires a codebase which has operations that do not rely on each other to be processed <a href="#reinders">(Reinders, 2007)</a>.
+                    It works particularly well in conjunction with BSP as a number of regions within a BSP tree can be split onto separate threads to be processed concurrently, often this can eliminate the possibility of race conditions 
+                    (issues which are caused by multiple threads attempting to read or modify the same data at the same time due to their asynchronous nature) if the regions contain all of the data needed for their own calculations.
+                </p>
+                <p>
+                    N-body simulations on supercomputers have been carried out for decades leading to a wide variety of optimisations designed for supercomputers. 
+                    Some of these optimisations may be applicable to the consumer market although most consumers will be unable to access computers with 32 processors like the supercomputers from the 90s <a href="#xu">(Xu, 1994)</a>
+                    let alone the millions of processors typically used for n-body simulations now <a href="#liu">(Liu et <i>al</i>., 2025)</a>.
+                </p>
+                <p>
+                    If the simulation is performed with each particle strictly affecting each other particle (known as Particle-Particle or PP), then the computational complexity is 
+                    <math>
+                        <mrow>
+                            <mo>O</mo>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msup>
+                                        <mi>N</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </math>.
+                    This will scale very quickly in terms of performance impact leading researchers to come up with different methods to optimise the simulation at the cost of marginal simulation inaccuracy <a href="#liu">(Liu et <i>al</i>., 2025)</a>.
+                    The simplest of these methods is the Tree method which uses a quadtree or oct-tree to divide the bodies into boxes. 
+                    At close distances, the particle interactions are calculated directly, whilst at further distances boxes are treated as particles with their position at their centre of mass instead of each particle being used. 
+                    This reduces the computational complexity to
+                    <math>
+                        <mrow>
+                            <mo>O</mo>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mi>N</mi>
+                                    <mo>log</mo>
+                                    <mi>N</mi>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </math>
+                    <a href="#barnes">(Barnes and Hut, 1986)</a>.
+                    Further methods exist such as the Particle-Mesh method which is less accurate at lower distances. 
+                    This then led to the creation of the combined Particle-Particle-Particle-Mesh (P<sup>3</sup>M) method which over short distances uses PP for increased accuracy, 
+                    and the Tree Particle-Mesh (TPM) method which similarly uses the Tree method at shorter distances. 
+                    These methods are all generally more efficient than the Tree method but still have complexity 
+                    <math>
+                        <mrow>
+                            <mo>O</mo>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mi>N</mi>
+                                    <mo>log</mo>
+                                    <mi>N</mi>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </math>
+                    <a href="#xu">(Xu, 1994)</a>.
+                </p>
+                <p>
+                    The Tree method seems the most sensible to test for application in games as it is the most similar to existing physical optimisations which are commonly used in the industry. 
+                    Therefore, it could reasonably piggyback off collision optimisations which are likely to be included anyway due to the computational complexity of collisions which are important to the majority of games. 
+                    The Barnes-Hut method specifically uses what is essentially a broad-phase pruning method based on the ratio of a branches distance to its size. 
+                    This could be configured to be more aggressive in games as it is not necessary for them to be as accurate as astrophysics simulations.
+                </p>
+                <p>
+                    Overall, this research suggests that the best techniques to apply to the problem are threading due to its broad use in optimising various problems, 
+                    and the Tree-Particle method which combines a form of binary space partitioning with broad phase pruning.
+                </p>
+            </div>
+            <div id="litConclusion">
+                <h3>Conclusion</h3>
+                <p>
+                    Overall, the literature suggests that the best physical model for real-time simulation of multiple large, 
+                    gravitational bodies would be Newtonian mechanics as it is sufficiently accurate to model the orbits of planets over a reasonable period of time whilst being computationally less complex than general relativity. 
+                    The multiple-body problem is an issue which could introduce incalculable instabilities into orbits causing models to collapse which would lead to challenges in the design of games. 
+                    This can be largely avoided by keeping orbits of massive bodies far apart leaving only massively small bodies to orbit as solitary moons, 
+                    fulfilling the criteria to simplify to a two-body problem for each planet and the sun or a restricted three-body problem with a moon. 
+                    For cases that do not obey these conditions, the only source of gravity for the planets can be set to be the star of a system, as is the case with <i>Outer Wilds</i>.
+                    Finally, optimisation of these kinds of models within real-time games is something of a gap in the literature, but promising techniques include threading and binary space partitioning using the Tree-Particle method
+                </p>
+            </div>
+        </section>
+        <section id="researchMethodologies">
+            <h2>Research Methodologies</h2>
+            <p>
+                Primary research was undertaken primarily to test RQ3 as real-time simulations on consumer grade technology was a gap in the literature. 
+                Primary testing allows the generation of data about how Newtonian gravity could be implemented in a video game with reasonable frame rates. 
+                Based on the results from the literature review, it was decided that the artefact would be based on Newtonian Mechanics to inform gravity calculations. 
+                This means that instead of providing a constant value for gravity along the y-axis, every frame the gravity would need to be recalculated with every object in the scene. 
+                The artefact will then also implement the Barnes-Hut Tree-Particle (TP) method of optimisation for the n-body gravity calculations before threading them as informed by the literature review.
+            </p>
+            <p>
+                The artefact was created in c++ and implemented acceleration based on Newton’s law of gravitation. 
+                Each object would calculate its acceleration on each frame by initially looping through a vector of every other object in the scene and using the equation 
+            </p>
+            <p>
+                <math display="block">
+                    <mi>a</mi>
+                    <mo>=</mo>
+                    <mrow>
+                        <mi>G</mi>
+                        <mfrac>
+                            <mrow>
+                                <msub>
+                                    <mi>m</mi>
+                                    <mn>2</mn>
+                                </msub>
+                            </mrow>
+                            <mrow>
+                                <msup>
+                                    <mi>r</mi>
+                                    <mn>2</mn>
+                                </msup>
+                            </mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </p>
+            <p>
+                where <math><mi>a</mi></math> is the resultant partial acceleration, <math><mi>G</mi></math> is the gravitational constant, <math><msub><mi>m</mi><mn>2</mn></msub></math> is the mass of the other object,
+                and <math><mi>r</mi></math> is the distance between the two objects. 
+                The result of each of these calculations would then be used to calculate the total acceleration for each object. 
+                This is the Particle-Particle method (PP) of n-body calculation. After the acceleration is calculated, it is applied to modify the object’s velocity and its position. 
+                To test that this worked, 11 initial objects were added to the scene: a sun and ten planets. 
+                Six of these planets had masses, positions, and velocities based on the planets from Mercury to Saturn and the sun was based on the Sun. 
+                Four additional planets were added between the planets based on Mars and Jupiter due to their distance apart. 
+                This all ran well with stable orbits when tested running for multiple hours. 
+                Then 2000 small asteroids were added to create lag. 
+                Profiling data was collected using <i>Optick</i> to ascertain the most costly functions and display the frame times. 
+                Unsurprisingly, the gravity calculations were shown to take up the majority of the processing time meaning that optimisations should target this. 
+                Following the research gathered during the literature review, a Tree-Particle (TP) optimisation using a quad tree as its basis was chosen as the next optimisation to implement.
+            </p>
+            <p>
+                To begin this optimisation, a quad tree implementation was constructed where each branch stored a vector of the objects within its bounds. 
+                Vectors were used as they contain dynamically sized memory which is stored contiguously to improve cache usage. 
+                The basic structure of the quad tree is constructed from the main function which calls a constructor for the root node, passing its position, size, and the vector of all of the objects within the scene. 
+                Then on its first update loop (controlled with a Boolean value to tell the branch if it is built), 
+                it recursively builds the tree by at each stage testing each of its objects to see if they would fit completely into any of the quadrants within the region. 
+                If any would, branches are constructed for each quadrant with objects in it and then built in the same way. 
+            </p>
+            <p>
+                After this first build, the update is again called which first calls update for each of its children so that the lowest level branches are updated first. 
+                Lifespan and max lifespan values are used to test if branches are still in use: each frame that a branch is empty, its lifespan is decreased, if it reaches 0 the branch is pruned, 
+                if it stops being empty its max lifespan is doubled (this keeps frequently used nodes alive longer to decrease repeated allocation and deallocation of memory) and its lifespan is reset. 
+                The next step in updating the tree is to loop through each branch’s objects and check if they are still within the bounds of the node. 
+                If so, an attempt is made to move the object deeper into the tree or otherwise stay on the same branch. 
+                If not, the object is moved up the tree until it is contained (or otherwise is left on the root if outside the bounds of the whole tree. 
+                This does cause performance issues as more objects are ejected from the system and end up on the root, however it proves that the performance gain early on is not gained by deleting ejected objects. 
+                A true implementation should either delete these ejected objects or come up with another solution to deal with them in accordance with the design of the game), once contained, an attempt is made to move it down the tree as before.
+            </p>
+            <p>
+                Finally, the update calls the update for each of the objects on the branch except this is modified to remove the gravity acceleration calculation which is instead implemented as below.
+            </p>
+            <p>
+                This quad tree was then used to implement the Barnes-Hut algorithm <a href="#barnes">(Barnes and Hut, 1986)</a> as a Tree-Particle optimisation. 
+                The Barnes-Hut method was chosen as it was shown to reduce the computational complexity from 
+                <math>
+                    <mrow>
+                        <mo>O</mo>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msup>
+                                    <mi>N</mi>
+                                    <mn>2</mn>
+                                </msup>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                    </mrow>
+                </math>
+                to
+                <math>
+                    <mrow>
+                        <mo>O</mo>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>N</mi>
+                                <mo>log</mo>
+                                <mi>N</mi>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                    </mrow>
+                </math>
+                and to be more similar to existing game optimisations than other methods which achieved the same computational efficiency. 
+                This meant for each object, going from the top of the tree and comparing the ratio <math><mi>s</mi><mo>/</mo><mi>d</mi></math> to a parameter <math><mi>&theta;</mi></math> where <math><mi>s</mi></math>
+                is the branch's width and <math><mi>d</mi></math> is the distance from the object to the centre of mass for the branch.
+                <math><mi>&theta;</mi></math> was an arbitrary value which was tested at various values, the lower it is the more precise the calculations should be and therefore less optimised. 
+                If <math><mi>s</mi><mo>/</mo><mi>d</mi></math> is greater than <math><mi>&theta;</mi></math> then each object on that branch is used to calculate gravity with the original object as usual and each child branch is tested similarly. 
+                Otherwise, the whole branch is treated as a single object with a position at the centre of mass of all of its child nodes and objects and a combined mass of all of them. 
+                After implementing the Barnes-Hut algorithm, profiling data still showed the gravity calculations to be the primary bottleneck although this technique vastly improved frame times.
+            </p>
+            <p>
+                The next optimisation was threading. In the artefact this was done by separating out the update loop of the quad tree into three sections. 
+                One handled the logic for recalculation of where each object should be situated on the quad tree, the second contained the acceleration calculations due to gravity, 
+                and the final section updated each object to apply their acceleration to their velocity and that in turn to their position. 
+                Doing this decoupled the latter two sections such that none of the information required to calculate the acceleration would be altered by the acceleration calculations and the same for the object updates. 
+                This meant that both sections could easily be threaded, if necessary, without risk of race conditions. 
+                Since the gravity calculations were taking the most processing time, this was the section that was threaded. Logic was added to check whether the node was the root of the tree. 
+                If so, instead of simply calling its children’s gravity functions, they were set off on separate threads. 
+                Two additional variations were created, one of which additionally threaded the grandchildren of the root by running threads from the initial child nodes as well, the second only threads the grandchildren. 
+                That means that these use 20 and 16 threads total. 
+                Each of these three variations were then tested at each threshold as used previously to analyse the effect of threading differing amounts at different thresholds.
+            </p>
         </section>
         <section id="references">
             <h2>References</h2>
