@@ -214,18 +214,23 @@ figure div {
     aspect-ratio: 16 / 9;
 }
 
-@media(max-width: 900px) {
-    figure div {
-        width: 100%;
-    }
-}
-
 .scatterGif {
     margin-top: -600px;
     margin-left: -1400px;
     width: 2000px;
     aspect-ratio: 16 / 9;
     max-width: unset;
+}
+
+@media(max-width: 900px) {
+    figure div {
+        width: 100%;
+    }
+    .scatterGif {
+        width: calc(1400px + 100%);
+        margin-left: calc(-1100px - 50%);
+        margin-top: calc(-350px - 50%);
+    }
 }
 
 /* Footer */
