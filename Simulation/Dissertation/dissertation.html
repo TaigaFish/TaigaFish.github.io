@@ -43,6 +43,11 @@
                     <a href="#litConclusion">Conclusion</a>
                 </div>
                 <a href="#researchMethodologies">Research Methodologies</a>
+                <a href="#resultsAndFindings">Results and Findings</a>
+                <div>
+                    <a href="#resIntroduction">Introduction</a>
+                    <a href="#control">Control</a>
+                </div>
                 <a href="#references">References</a>
             </div>
         </section>
@@ -710,6 +715,130 @@
                 That means that these use 20 and 16 threads total. 
                 Each of these three variations were then tested at each threshold as used previously to analyse the effect of threading differing amounts at different thresholds.
             </p>
+        </section>
+        <section id="resultsAndFindings">
+            <h2>Results and Findings</h2>
+            <div id="resIntroduction">
+                <h3>Introduction</h3>
+                <p>
+                    For each optimisation technique (including the control), three types of results will be discussed: 
+                </p>
+                <li>
+                    Qualitative data regarding how the artefact visibly appears.
+                </li>
+                <li>
+                    Data taken from <i>Optick</i> which provides a breakdown of how long tracked functions take up in a single profiled frame 
+                    (the last frame which is profiled) which will primarily focus of the percentage of the frame time taken by each function to show which functions are bottlenecks for the program.
+                </li>
+                <li>
+                    Frame times to the nearest millisecond as recorded by <i>Optick</i>.
+                    Roughly 100 frames will be profiled from close to the start of the simulation. Of these frames, the last 40 will be recorded. 
+                    This should give the program time to settle as the first frames may have additional overhead, especially in setting up quad trees which won’t typically affect performance later on. 
+                    These later frames should be more indicative of how the program will appear at runtime.
+                </li>
+            </div>
+            <div id="control">
+                <h3>Control</h3>
+                <p>
+                    Implementing Newtonian Mechanics to simulate gravity provided an extensible framework: simply adding an object with a specified mass, 
+                    velocity, and position to the vector would cause the object to begin orbiting the other objects in the scene. 
+                    If these values were just right, the new object would be placed in a stable orbit about the other objects in the scene, otherwise over time it would be ejected from the system. 
+                    Although the system used n-body simulation, the orbits of these planets were stable. 
+                    Beyond these, the 2000 asteroids in the model caused significant visual lag in the control. This lag did not cause the planetary orbits to be unstable even running for multiple hours.
+                </p>
+                <p>
+                    Table 1 shows that at this stage, the gravity calculations take up around 96.8% of the frame time.
+                    This places it as the primary bottleneck for performance as the vast majority of frame time is spent at this stage.
+                </p>
+                <figure>
+                    <img src="/Images/Dissertation/controlBreakdown.png" alt="Table 1. Percentage of processing time used by various functions for the control">
+                    <figcaption>Table 1. Percentage of processing time used by various functions for the control</figcaption>
+                </figure>
+                <p>
+                    Table 2 shows the average, spread, and the bounds of frame times using multiple measures of each of these. 
+                    For the control there is a high level of consistency between these measures of average. 
+                    As the mean is slightly higher than the median and the mode, this indicates a slight positive skew meaning that outliers fall above the average. 
+                    This can be seen in the different bounds of the data: the minimum milliseconds per frame was only 2 below the frame time of the lower quartile, whereas the maximum was 9 above the upper quartile. 
+                    The inter quartile range and standard deviation are both low relative to the scale of the data being over 2 orders of magnitude lower than the averages. 
+                    This shows that the frame times were consistent overall. 
+                    The average frame times here convert to a little over 3 frames per second which is 20 times lower than the desired frame rate.
+                </p>
+                <figure>
+                    <img src="/Images/Dissertation/controlTable.png" alt="Table 2">
+                    <figcaption>Table 2</figcaption>
+                </figure>
+                <p>
+                    The Tree-Particle method introduces a threshold value <math><mi>&theta;</mi></math>.
+                    If the ratio between the size of a branch and the distance from the branch’s centre of mass to the object which gravity is being calculated for is lower than this value, 
+                    the whole branch is treated as a single object, otherwise each child branch is considered and the acceleration due to any objects on the branch is calculated using the Particle-Particle (PP) method. 
+                    Therefore, at lower values of <math><mi>&theta;</mi></math>, there is a higher accuracy of simulation, but lower performance as more of the calculations are using PP.
+                </p>
+                <p>
+                    This difference can be seen in figures 1, 2 and 3 as the pattern of asteroid scattering around the white planet is marginally different: 
+                    gravity seems to hold some asteroids closer, ejecting them quickly one by one at the 0.7 threshold, whilst at 1 and 1.5 there appears to be a slow ejection that happens to a group of asteroids all at once. 
+                    The simulation is also visibly running at a much higher frame rate with this optimisation when compared to the control (note that the gifs shown below are not representative of the true frame rate as they are limited to 30 fps).
+                </p>
+                <figure>
+                    <div>
+                        <img class="scatterGif" src="/Images/Dissertation/fig1.gif" alt="Asteroid scattering around a planet at the 0.7 threshold">
+                    </div>
+                    <figcaption>Fig. 1. Asteroid scattering around a planet at the 0.7 threshold</figcaption>
+                </figure>
+                <figure>
+                    <div>
+                        <img class="scatterGif" src="/Images/Dissertation/fig2.gif" alt="Asteroid scattering around a planet at the 1 threshold">
+                    </div>
+                    <figcaption>Fig. 2. Asteroid scattering around a planet at the 1 threshold</figcaption>
+                </figure>
+                <figure>
+                    <div>
+                        <img class="scatterGif" src="/Images/Dissertation/fig3.gif" alt="Asteroid scattering around a planet at the 1.5 threshold">
+                    </div>
+                    <figcaption>Fig. 3. Asteroid scattering around a planet at the 1.5 threshold</figcaption>
+                </figure>
+                <p>
+                    Table 3 reveals that although the calculations of acceleration due to gravity still takes up most of the frame time for TP at about 62.9%, 
+                    maintaining the tree now also takes a significant amount of frame time with the insert function now taking 9.8% of the frame and the quad tree’s update taking another 15.8% 
+                    (note that although the insert function and calculate acceleration functions take place within the update function, the percentage shown for the update function ignores this time due to them also being profiled, 
+                    this better represents where the processing time is being used specifically. 
+                    The insert function is included in this break down separately to update as is accounts for a significant part of that processing time and therefore could become a target for further optimisation). 
+                    This means that now only 89% of the total frame time is used to calculate the accelerations though some of that is overhead to using quad trees.
+                </p>
+                <figure>
+                    <img src="/Images//Dissertation/tp0.7Breakdown.png" alt="Percentage of processing time used by various functions for TP at threshold 0.7">
+                    <figcaption>Table 3. Percentage of processing time used by various functions for TP at threshold 0.7</figcaption>
+                </figure>
+                <p>
+                    The breakdowns for the other two thresholds reveal much the same thing so are not included in this section, though they can be found in appendix 2.
+                </p>
+                <p>
+                    Table 4 shows the average, spread, and the bounds of frame times as before for the control, this time showing TP at all three thresholds. 
+                    Like with the control there is a high level of consistency between these measures of average for each threshold. 
+                    All three of these thresholds again are shown to have slight positive skew. Relative to the scale of the data, the inter quartile range and standard deviation are not as low as with the control. 
+                    This indicates that the frame times were slightly less consistent overall, 
+                    with the optimization at threshold 1 being almost twice as consistent as the others based on its standard deviation and range or 4 times as consistent based on its IQR. 
+                    The average frame times at threshold 0.7 are roughly 42 to 44 frames per second which is 14 times better than the control for the most accurate version that was tested. 
+                    At threshold 1, the frame rate is about 58 to 59 frames per second, almost 20 times better than the control. 
+                    At threshold 1.5, the frame rate is roughly 79 to 83 frames per second which is 26 to 27 times better than the control.
+                </p>
+                <figure>
+                    <img src="/Images//Dissertation/tpTable.png" alt="Table 4">
+                    <figcaption>Table 4</figcaption>
+                </figure>
+                <p>
+                    Fig. 4 shows the frame times across 40 frames of the TP optimisations against the control on a line graph to visually display the significance of the improvement that TP provides. 
+                    Fig. 5 shows the same information without the control to convey the differences between the thresholds in a way that can be better appreciated. 
+                    From this, it is clear that higher thresholds result in a direct performance with only slight crossover between thresholds 1 and 1.5 on the first frame profiled.
+                </p>
+                <figure>
+                    <img src="/Images/Dissertation/tpControlGraph.png">
+                    <figcaption>Fig. 4</figcaption>
+                </figure>
+                <figure>
+                    <img src="/Images/Dissertation/tpGraph.png">
+                    <figcaption>Fig. 5</figcaption>
+                </figure>
+            </div>
         </section>
         <section id="references">
             <h2>References</h2>

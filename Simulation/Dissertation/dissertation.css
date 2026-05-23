@@ -71,6 +71,7 @@ img {
 a {
     color: var(--white);
     text-decoration: none;
+    overflow-wrap: break-word;
 }
 
 section {
@@ -195,6 +196,36 @@ ul {
 .pixelated {
     image-rendering: crisp-edges;
     image-rendering: pixelated;
+}
+
+figure {
+    margin-bottom: var(--gutter-small);
+    max-width: 70%;
+}
+
+figcaption {
+    font-size: var(--fs-gutter);
+}
+
+figure div {
+    margin-left: 0;
+    overflow: hidden;
+    width: 600px;
+    aspect-ratio: 16 / 9;
+}
+
+@media(max-width: 900px) {
+    figure div {
+        width: 100%;
+    }
+}
+
+.scatterGif {
+    margin-top: -600px;
+    margin-left: -1400px;
+    width: 2000px;
+    aspect-ratio: 16 / 9;
+    max-width: unset;
 }
 
 /* Footer */
