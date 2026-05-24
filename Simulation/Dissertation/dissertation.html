@@ -26,12 +26,12 @@
                 <a href="#abstract">Abstract</a>
                 <a href="#introduction">Introduction</a>
                 <a href="#aimsAndObjectives">Aims and Objectives</a>
-                <div>
+                <div class="contentIndent">
                     <a href="#aims">Aims</a>
                     <a href="#objectives">Objectives</a>
                 </div>
                 <a href="#literatureReview">Literature Review</a>
-                <div>
+                <div class="contentIndent">
                     <a href="#litIntroduction">Introduction</a>
                     <a href="#historyOfPhysicalModels">History of Physical Models</a>
                     <a href="#newtonianGravity">Newtonian Gravity</a>
@@ -44,9 +44,15 @@
                 </div>
                 <a href="#researchMethodologies">Research Methodologies</a>
                 <a href="#resultsAndFindings">Results and Findings</a>
-                <div>
+                <div class="contentIndent">
                     <a href="#resIntroduction">Introduction</a>
                     <a href="#control">Control</a>
+                    <a href="#tree-particleOptimisation">Tree-particle Optimisation</a>
+                    <a href="#threading">Threading</a>
+                    <div class="contentIndent">
+                        <a href="#threadingThreshold0.7">Threading at threshold 0.7</a>
+                        <a href="#threadingThreshold1">Threading at threshold 1</a>
+                    </div>
                 </div>
                 <a href="#references">References</a>
             </div>
@@ -767,6 +773,9 @@
                     <img src="/Images/Dissertation/controlTable.png" alt="Table 2">
                     <figcaption>Table 2</figcaption>
                 </figure>
+            </div>
+            <div id="tree-particleOptimisation">
+                <h3>Tree-particle Optimisation</h3>
                 <p>
                     The Tree-Particle method introduces a threshold value <math><mi>&theta;</mi></math>.
                     If the ratio between the size of a branch and the distance from the branch’s centre of mass to the object which gravity is being calculated for is lower than this value, 
@@ -838,6 +847,113 @@
                     <img src="/Images/Dissertation/tpGraph.png">
                     <figcaption>Fig. 5</figcaption>
                 </figure>
+            </div>
+            <div id="threading">
+                <h3>Threading</h3>
+                <p>
+                    The three different threading implementations are as follows:
+                </p>
+                <ul>
+                    <li>
+                        The tree root executes the update accelerations event of its 4 child branches (if they exist) on threads. 
+                        This will be referred to as the 4-thread method for conciseness going forward.
+                    </li>
+                    <li>
+                        Each of the 4 children of the root node execute the update accelerations of their 4 children each where possible. 
+                        As this results in a maximum of 16 threads being used, this will be referred to as the 16-thread method.
+                    </li>
+                    <li>
+                        Both of the above methods are combined, generating up to 20 threads. 
+                        This will be known as the 20-thread method.
+                    </li>
+                </ul>
+                <p>
+                    Since figure 5 suggests a strong inverse relationship between the threshold and frame times, this section will look at the different threading techniques on a per threshold basis instead of a per thread implementation basis. 
+                    It is assumed that each implementation of threading will have a better performance with a higher threshold as before.
+                </p>
+                <p>
+                    The visible performance of each threading technique is very similar to that of the Tree-Particle method at the equivalent threshold so each will not be reported in further depth.
+                </p>
+                <p>
+                    After adding threading, the quad tree update is split into three functions: one to update the accelerations, one to update the tree itself, and one to call the planet updates.  
+                    Although these make up what was previously the update function, the function for updating the accelerations is more similar to the previous calculate acceleration function in its percentage of the frame time. 
+                    This is due to limitations with Optick making it difficult to profile that function directly when it is not on the main thread. This is important to know when viewing the results in tables 5, 6, 8, 9, 11, and 12
+                </p>
+                <div id="threadingThreshold0.7">
+                    <h4>Threading at threshold 0.7</h4>
+                    <p>
+                        Tables 5 and 6 show the function break downs for the 4-thread and 20-thread methods (note that the 16-thread method is not shown as it was found to be the worst method across all three thresholds). 
+                        These tables reveal a continuing trend that sees the acceleration calculations becoming a lower percentage of the total frame time as the program gets optimised to higher frame rates 
+                        (in this case 20-thread has a higher frame rate as shown in table 7). 
+                        Notably most of the functions take the same proportion of the frame to within a percent except for the update accelerations function. 
+                        This shows that the actual improvement between them lies in that function with the other functions all taking slightly more of the total frame time as a result.
+                    </p>
+                    <figure>
+                        <img src="/Images/Dissertation/4Thread0.7Breakdown.png" alt="Percentage of processing time used by various functions for 4-thread at threshold 0.7">
+                        <figcaption>Table 5. Percentage of processing time used by various functions for 4-thread at threshold 0.7</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/Images/Dissertation/20Thread0.7Breakdown.png" alt="Percentage of processing time used by various functions for 20-thread at threshold 0.7">
+                        <figcaption>Table 6. Percentage of processing time used by various functions for 20-thread at threshold 0.7</figcaption>
+                    </figure>
+                    <p>
+                        Table 7 compares the averages, spreads, and the bounds of frame between each threading implementation at the 0.7 threshold. 
+                        At this threshold, 16-thread is shown to have both the highest average frame time across all three measures of average, and the largest spread across all three measures of spread. 
+                        The best method at this threshold is shown to be 20-thread. 
+                        It has the lowest average frame time across all three measures and is more consistent based on both its range and standard deviation, although the inter-quartile range shows 4-thread to be more consistent. 
+                        Like all of the data so far, these three implementations have slight positive skew at this threshold. 
+                        All three of these are more optimised than just the Tree-Particle method at this threshold, although 16-thread is not much of an improvement. 
+                        The average frame rate of 4-thread is between 61 and 63 frames per second. 
+                        The average for 16-thread is between 48 and 50 frames per second. 20-thread’s average frame rate is between 65 and 67 frames per second.
+                    </p>
+                    <figure>
+                        <img src="/Images/Dissertation/thread0.7Table.png" alt="Table 7">
+                        <figcaption>Table 7</figcaption>
+                    </figure>
+                    <p>
+                        These three optimisations are plotted alongside TP on a line graph in figure 6. 
+                        This shows how each improves upon TP with 16-thread briefly fluctuating above TP, and 4-thread briefly fluctuating above 16 and below 20 at its extremes.
+                    </p>
+                    <figure>
+                        <img src="/Images/Dissertation/thread0.7Graph.png" alt="Fig. 6">
+                        <figcaption>Fig. 6</figcaption>
+                    </figure>
+                </div>
+                <div id="threadingThreshold1">
+                    <h4>Threading at threshold 1</h4>
+                    <p>
+                        Tables 8 and 9 show break downs for the function times for 4 and 20 threads respectively. 
+                        This time the 4-thread update takes up a lower percentage of the frame time as it is more optimal (as shown in table 10). 
+                        The other three functions in the quad tree class together take up a higher proportion of the frame time than the acceleration calculations.
+                    </p>
+                    <figure>
+                        <img src="/Images/Dissertation/4Thread1Breakdown.png" alt="Percentage of processing time used by various functions for 4-thread at threshold 1">
+                        <figcaption>Table 8. Percentage of processing time used by various functions for 4-thread at threshold 1</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/Images/Dissertation/20Thread1Breakdown.png" alt="Percentage of processing time used by various functions for 20-thread at threshold 1">
+                        <figcaption>Table 9. Percentage of processing time used by various functions for 20-thread at threshold 1</figcaption>
+                    </figure>
+                    <p>
+                        Table 10 shows that again, the 16-thread implementation is the worst of the threading optimisations, and this time performs even worse than unthreaded TP. 
+                        4-thread is this time more optimal, although 20-thread is still the most consistent. Whilst 16 and 20 threads both still have slight positive skew, 4-thread this time has slight negative skew. 
+                        4-thread operates at about 77 to 79 frames per second on average. 
+                        16-thread achieves between 52 and 53 frames per second. 
+                        20-thread operates at around 70 to 71 frames per second.
+                    </p>
+                    <figure>
+                        <img src="/Images/Dissertation/thread1Table.png" alt="Table 10">
+                        <figcaption>Table 10</figcaption>
+                    </figure>
+                    <p>
+                        Figure 7 compares the three techniques with TP on a graph, showing that 16-thread is now the worst including TP, whilst 4-thread is the best. 
+                        There is very little crossover between lines.
+                    </p>
+                    <figure>
+                        <img src="/Images/Dissertation/thread1Graph.png" alt="Fig. 7">
+                        <figcaption>Fig. 7</figcaption>
+                    </figure>
+                </div>
             </div>
         </section>
         <section id="references">

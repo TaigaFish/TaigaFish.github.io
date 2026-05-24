@@ -37,6 +37,7 @@ html {
     --fs-h2: 6rem;
     --fs-h3: 4rem;
     --fs-h4: 3rem;
+    --fs-h5: 2.5rem;
 
     --fs-header-text: 2.4rem;
     --fs-button: 2.2rem;
@@ -105,7 +106,7 @@ section {
     }
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     color: var(--green);
     font-weight: 700;
     line-height: 1.1;
@@ -124,6 +125,11 @@ h3 {
     margin-bottom: var(--gutter-small);
 }
 
+h4 {
+    font-size: var(--fs-h4);
+    margin-bottom: var(--gutter-tiny);
+}
+
 @media(max-width: 500px) {
     h1 {
         font-size: var(--fs-h2);
@@ -133,6 +139,9 @@ h3 {
     }
     h3 {
         font-size: var(--fs-h4);
+    }
+    h4 {
+        font-size: var(--fs-h5);
     }
 }
 
@@ -177,7 +186,7 @@ div {
     display: flex;
     flex-direction: column;
 }
-div div {
+.contentIndent {
     margin-left: var(--gutter-tiny);
 }
 
