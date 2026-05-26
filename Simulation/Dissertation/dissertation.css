@@ -185,10 +185,11 @@ details summary {
         color: var(--pink);
         margin-inline-start: -2rem;
         position: absolute;
-    }
-    &::before:hover
-    {
-        color: var(--white);
+        @media(max-width: 500px) {
+            margin-inline-start: -3rem;
+            margin-block-start: -0.6rem;
+            font-size: var(--fs-h5);
+        }
     }
 }
 
@@ -198,6 +199,7 @@ details[open] > summary::before {
 
 .h2Summary::before {
         margin-block-start: 1em;
+        margin-inline-start: -1.5rem;
         @media(max-width: 500px) {
             margin-block-start: 0.2em;
         }
