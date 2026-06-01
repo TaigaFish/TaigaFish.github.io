@@ -1,0 +1,5 @@
+- Add section on engine
+- Add about for C.R.A.B.
+- Add sidebar for about pages to link to githubs
+- Change primary image on about page to embedded video?
+- Reformat dissertation again
