@@ -203,12 +203,6 @@ ul {
     image-rendering: pixelated;
 }
 
-.pixelated {
-    @media(max-height: 1900px) {
-        image-rendering: unset;
-    }
-}
-
 /* Header */
 
 header {
@@ -218,6 +212,9 @@ header {
     image-rendering: crisp-edges;
     image-rendering: pixelated;
     background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url("Images/spaceSimulation.gif");
+    @media(min-height: 1900px) {
+        image-rendering: unset;
+    }
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
