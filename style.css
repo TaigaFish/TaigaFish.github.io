@@ -202,8 +202,9 @@ ul {
     image-rendering: crisp-edges;
     image-rendering: pixelated;
 }
-@media(max-height: 1900px) {
-    .pixelated {
+
+.pixelated {
+    @media(max-height: 1900px) {
         image-rendering: unset;
     }
 }
