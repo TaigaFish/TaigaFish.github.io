@@ -472,6 +472,7 @@ footer {
 
 .footer-social {
     margin-bottom: var(--gutter-med-small);
+    display: unset;
 }
 
 .footer-social a:not(:last-child) {
